@@ -2,6 +2,15 @@ package variaveis;
 public class Variaveis {
 
     public static void main(String[] args) {
+        /*
+        TIPOS NUMERICOS
+            int     => 1
+            double  => 1.0
+            long    => 1000000000L
+            float   => 1.000F;
+            
+        */
+        
         String nome = "Bruno  Monteiro";
         int idade = 25;
         double peso = 94.0;
