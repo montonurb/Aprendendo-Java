@@ -5,7 +5,7 @@ public class Conta {
     double saldo;
     int agencia;
     int numero;
-    String titular;
+    Cliente cliente;    //pode ser feito também como Cliente cliente = new Cliente();
 
     public boolean deposita(double valor) {
         if (valor >= 0.0) {
