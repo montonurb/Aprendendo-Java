@@ -5,7 +5,7 @@ public class Funcionario {
     private String cpf;
     private double salario;
     
-    public Funcionario() {}
+    public Funcionario(String nome) {}
     
     public void setNome(String nome) {
         this.nome = nome;
