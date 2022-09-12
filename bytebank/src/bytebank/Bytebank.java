@@ -3,24 +3,31 @@ package bytebank;
 public class Bytebank {
     public static void main(String[] args) {
         Conta contaBruno = new Conta();
-        contaBruno.cliente = new Cliente();
-        contaBruno.cliente.nome = "Bruno Monteiro";
-        contaBruno.saldo = 150.00;
+        Cliente bruno = new Cliente();
+        contaBruno.setCliente(bruno);
+        contaBruno.getCliente().setNome("Bruno Monteiro");
+        contaBruno.getCliente().setProfissao("Programador");
         
-        contaBruno.deposita(100.00);
-        contaBruno.consultarSaldo();
+        contaBruno.deposita(150.0);
+        contaBruno.getSaldo();
         
-        contaBruno.saca(1.00);
-        contaBruno.consultarSaldo();
+        contaBruno.saca(10.00);
+        contaBruno.getSaldo();
         
         Conta contaValeria = new Conta();
-        contaValeria.cliente = new Cliente();
-        contaValeria.cliente.nome = "Valeria Veras";
-        contaValeria.saldo = 2000;
+        Cliente valeria = new Cliente();
+        contaValeria.setCliente(valeria);
+        contaValeria.getCliente().setNome("Valeria Veras");
+        contaValeria.getCliente().setProfissao("Professora");
+        contaValeria.deposita(2000);
                 
-        contaValeria.transfere(15000.00, contaBruno);
-        contaValeria.consultarSaldo();
-        contaBruno.consultarSaldo();
+        contaValeria.transfere(150.00, contaBruno);
+        
+        System.out.println(contaValeria.getCliente().getNome());
+        System.out.println(contaValeria.getSaldo());
+        System.out.println(contaBruno.getCliente().getNome());
+        System.out.println(contaBruno.getSaldo());
+        
         
     }
 }
