@@ -1,7 +1,7 @@
 package empresa;
 
 public class Gerente extends Funcionario{
-    private String senha;
+    private String senha = "13";
     
     public Gerente(String nome) {
         super(nome);
