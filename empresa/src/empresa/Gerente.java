@@ -19,7 +19,8 @@ public class Gerente extends Funcionario{
         }
     }
     
+    @Override
     public double bonificacao() {
-        return super.bonificacao() + super.getSalario();
+        return this.getSalario() + this.getSalario() * 0.1;
     }
 }
