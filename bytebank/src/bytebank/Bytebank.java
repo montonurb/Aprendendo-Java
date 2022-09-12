@@ -2,7 +2,7 @@ package bytebank;
 
 public class Bytebank {
     public static void main(String[] args) {
-        Conta contaBruno = new Conta();
+        Conta contaBruno = new Conta(0012, 120354);
         Cliente bruno = new Cliente();
         contaBruno.setCliente(bruno);
         contaBruno.getCliente().setNome("Bruno Monteiro");
@@ -14,7 +14,7 @@ public class Bytebank {
         contaBruno.saca(10.00);
         contaBruno.getSaldo();
         
-        Conta contaValeria = new Conta();
+        Conta contaValeria = new Conta(0012, 120355);
         Cliente valeria = new Cliente();
         contaValeria.setCliente(valeria);
         contaValeria.getCliente().setNome("Valeria Veras");

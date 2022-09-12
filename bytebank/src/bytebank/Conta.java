@@ -7,6 +7,8 @@ public class Conta {
     private int numero;
     private Cliente cliente = new Cliente();    //pode ser feito também como Cliente cliente = new Cliente();
 
+    public Conta(int agencia, int numero) {}
+    
     public boolean deposita(double valor) {
         if (valor >= 0.0) {
             this.saldo += valor;
@@ -56,6 +58,10 @@ public class Conta {
     
     public int getNumero() {
         return this.numero;
+    }
+    
+    public void setAgencia(int agencia) {
+        this.agencia = agencia;
     }
     
     public int getAgencia() {
