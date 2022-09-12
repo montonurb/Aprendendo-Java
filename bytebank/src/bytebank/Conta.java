@@ -6,8 +6,11 @@ public class Conta {
     private int agencia;
     private int numero;
     private Cliente cliente = new Cliente();    //pode ser feito também como Cliente cliente = new Cliente();
-
-    public Conta(int agencia, int numero) {}
+    private static int total;
+    
+    public Conta(int agencia, int numero) {
+        total++;
+    }
     
     public boolean deposita(double valor) {
         if (valor >= 0.0) {
@@ -74,5 +77,9 @@ public class Conta {
     
     public Cliente getCliente() {
         return this.cliente;
+    }
+    
+    public static int getTotal() {
+        return total;
     }
 }

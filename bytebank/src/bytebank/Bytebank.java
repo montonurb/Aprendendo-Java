@@ -29,5 +29,7 @@ public class Bytebank {
         System.out.println(contaBruno.getSaldo());
         
         
+        System.out.println("Total de contas abertas: " + Conta.getTotal());
+        
     }
 }
