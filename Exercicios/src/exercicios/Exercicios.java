@@ -19,9 +19,11 @@ public class Exercicios {
         //totalAzulejos.tamanhos(3.5, 4.0, 1.0, 0.8);
         
         //EXERCICIO 05
-        Volume volume = new Volume();
-        volume.informarDados(1.4, 2);
+        //Volume volume = new Volume();
+        //volume.informarDados(1.4, 2);
         
         //EXERCICIO 06
+        Cavalos quantidadeCavalos = new Cavalos();
+        quantidadeCavalos.informarDados(10, 1.8, 60);
     }  
 }
