@@ -2,10 +2,11 @@ package empresa;
 
 public class Administrador extends Funcionario implements Autenticacao {
     
-    private String senha;
+    private AutenticacaoUtil autenticacao;
 
     public Administrador(String nome) {
         super(nome);
+        this.autenticacao = new AutenticacaoUtil();
     }
 
     @Override
@@ -15,16 +16,12 @@ public class Administrador extends Funcionario implements Autenticacao {
 
     @Override
     public void setSenha(String senha) {
-        this.senha = senha;
+        this.autenticacao.setSenha(senha);
     }
 
     @Override
     public boolean autentica(String senha) {
-        if(this.senha == senha) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.autentica(senha);
     }
     
 }

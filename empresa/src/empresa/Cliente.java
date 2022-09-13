@@ -2,20 +2,19 @@ package empresa;
 
 public class Cliente implements Autenticacao {
 
-    private String senha;
+    private AutenticacaoUtil autenticacao;
+    
+    Cliente() {
+        this.autenticacao = new AutenticacaoUtil();
+    }
     
     @Override
     public void setSenha(String senha) {
-        this.senha = senha;
+        this.autenticacao.setSenha(senha);
     }
 
     @Override
     public boolean autentica(String senha) {
-        if(this.senha == senha) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.autenticacao.autentica(senha);
     }
-    
 }

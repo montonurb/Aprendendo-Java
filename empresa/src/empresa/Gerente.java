@@ -2,24 +2,21 @@ package empresa;
 
 public class Gerente extends Funcionario implements Autenticacao {
     
-    private String senha = "13";
+    private AutenticacaoUtil autenticacao;
     
     public Gerente(String nome) {
         super(nome);
+        this.autenticacao = new AutenticacaoUtil();
     }
     
     @Override
     public void setSenha(String senha) {
-        this.senha = senha;
+        this.autenticacao.setSenha(senha);
     }
     
     @Override
     public boolean autentica(String senha) {
-        if(this.senha == senha) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.autenticacao.autentica(senha);
     }
     
     @Override

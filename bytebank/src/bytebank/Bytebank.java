@@ -48,5 +48,18 @@ public class Bytebank {
         
         System.out.println(contaC.getSaldo());
         System.out.println(contaP.getSaldo());
+        
+        System.out.println("\n*****************IMPOSTO*****************");
+
+        
+        ContaCorrente cc = new ContaCorrente(222, 333);
+        cc.deposita(100.0);
+        
+        Seguro seguro = new Seguro();
+        Imposto imposto = new Imposto();
+        imposto.registro(cc);
+        imposto.registro(seguro);
+        
+        System.out.println(imposto.getTotalImposto());
     }
 }

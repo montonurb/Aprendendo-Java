@@ -2,7 +2,7 @@ package bytebank;
 
 public abstract class Conta {
 
-    private double saldo;
+    protected double saldo;
     private int agencia;
     private int numero;
     private Cliente cliente = new Cliente();    //pode ser feito também como Cliente cliente = new Cliente();
