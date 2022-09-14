@@ -10,6 +10,7 @@ public class Exercicios {
         
         //EXERCICIO 02
         
+        
         //EXERCICIO 03
         //Salario mediaSalario = new Salario();
         //mediaSalario.salarioFuncionarios(1200, 1200, 2400, 2400, 3200);
