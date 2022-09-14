@@ -52,6 +52,7 @@ public class GerenciadorDeCursos {
         Collections.sort(aulas, Comparator.comparing(Aula::getTitulo));
         System.out.println(aulas);
          */
+ /* TERCEIRA AULA
         Curso javaColecoes = new Curso("Java Collections", "Paulo Silveira");
 
         javaColecoes.adiciona(new Aula("Trabalhando com ArrayList", 24));
@@ -65,7 +66,18 @@ public class GerenciadorDeCursos {
         List<Aula> aulas = new ArrayList<>(aulasImutaveis);
         
         javaColecoes.gettotalAulas();
+         */
         
+        Curso javaColecoes = new Curso("Java Collections", "Paulo Silveira");
+ 
+        javaColecoes.adicionaAula(new Aula("Trabalhando com ArrayList", 24));
+        javaColecoes.adicionaAula(new Aula("Listas de Objetos", 19));
+        javaColecoes.adicionaAula(new Aula("Relacionanmentos com Colecoes", 23));
+        
+        javaColecoes.matriculaAluno(new Aluno("Bruno Monteiro", "1056924"));
+        javaColecoes.matriculaAluno(new Aluno("Jailson Silva", "1056925"));
+        
+        System.out.println(javaColecoes.getAlunos());
     }
 
 }
