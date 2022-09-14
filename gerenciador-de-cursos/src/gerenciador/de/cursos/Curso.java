@@ -40,11 +40,11 @@ public class Curso {
         this.alunos.add(aluno);
     }
     
-    public int gettotalAulas() {
+    public int getTotalAulas() {
         return tempototal; 
     }
     
     public Set<Aluno> getAlunos() {
-        return alunos;
+        return Collections.unmodifiableSet(alunos);
     }
 }
