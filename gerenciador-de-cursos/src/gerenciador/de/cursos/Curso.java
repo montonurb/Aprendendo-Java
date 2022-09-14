@@ -9,6 +9,7 @@ public class Curso {
     private String nome;
     private String instrutor;
     private List<Aula> aulas = new ArrayList<Aula>();
+    private int tempototal;
 
     public Curso(String nome, String instrutor) {
         this.nome = nome;
@@ -29,5 +30,10 @@ public class Curso {
     
     public void adiciona(Aula aula) {
         this.aulas.add(aula);
+        this.tempototal += aula.getTempo();
+    }
+    
+    public int gettotalAulas() {
+        return tempototal; 
     }
 }
