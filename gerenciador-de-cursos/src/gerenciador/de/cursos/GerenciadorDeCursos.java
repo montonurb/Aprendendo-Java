@@ -22,14 +22,13 @@ public class GerenciadorDeCursos {
         aulas.remove(0);
 
         System.out.println(aulas);
-
-        for (int i = 0; i < aulas.size(); i++) {
-            System.out.println(aulas.get(i));
+        
+        for(String aula : aulas) {
+            System.out.println(aula);
         }
         
         aulas.add("Aumentando nosso conhecimento");
         System.out.println(aulas);
-        
     }
 
 }
