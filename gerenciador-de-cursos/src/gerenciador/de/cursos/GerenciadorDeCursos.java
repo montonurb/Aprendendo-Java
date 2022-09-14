@@ -74,12 +74,19 @@ public class GerenciadorDeCursos {
         javaColecoes.adicionaAula(new Aula("Listas de Objetos", 19));
         javaColecoes.adicionaAula(new Aula("Relacionanmentos com Colecoes", 23));
         
-        javaColecoes.matriculaAluno(new Aluno("Bruno Monteiro", "1056924"));
-        javaColecoes.matriculaAluno(new Aluno("Jailson Silva", "1056925"));
+        javaColecoes.matriculaDoAluno(new Aluno("Bruno Monteiro", "1056924"));
+        javaColecoes.matriculaDoAluno(new Aluno("Jailson Silva", "1056925"));
         
         //System.out.println(javaColecoes.getAlunos());
         
         System.out.println(javaColecoes.alunoMatriculado("Bruno Monteiro"));
+    
+        String nome = "Teste";
+        nome.length();
+        
+        
+        System.out.println(javaColecoes.buscarAluno("1056924"));
+        
     }
 
 }
