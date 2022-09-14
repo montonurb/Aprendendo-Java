@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class GerenciadorDeCursos {
 
@@ -20,9 +21,8 @@ public class GerenciadorDeCursos {
         aulas.add(aula3);
 
         System.out.println(aulas);
-
+        
         aulas.remove(0);
-
         System.out.println(aulas);
         
         for(String aula : aulas) {
@@ -33,6 +33,7 @@ public class GerenciadorDeCursos {
         System.out.println(aulas);
          */
 
+ /* SEGUNDA AULA
         Aula aula1 = new Aula("Trabalhando com ArrayList", 24);
         Aula aula2 = new Aula("Lista de objetos", 19);
         Aula aula3 = new Aula("Relacionamentos com colecoes", 15);
@@ -44,12 +45,21 @@ public class GerenciadorDeCursos {
         aulas.add(aula3);
 
         System.out.println(aulas);
-        
+
         Collections.sort(aulas, Comparator.comparing(Aula::getTempo));
         System.out.println(aulas);
-        
+
         Collections.sort(aulas, Comparator.comparing(Aula::getTitulo));
         System.out.println(aulas);
+         */
+ 
+        Curso javaColecoes = new Curso("Java Collections", "Paulo Silveira");
+
+        javaColecoes.adiciona(new Aula("Trabalhando com ArrayList", 24));
+        javaColecoes.adiciona(new Aula("Listas de Objetos", 19));
+        javaColecoes.adiciona(new Aula("Relacionanmentos com Colecoes", 23));
+
+        System.out.println(javaColecoes.getAulas());
     }
 
 }
