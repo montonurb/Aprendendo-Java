@@ -77,7 +77,9 @@ public class GerenciadorDeCursos {
         javaColecoes.matriculaAluno(new Aluno("Bruno Monteiro", "1056924"));
         javaColecoes.matriculaAluno(new Aluno("Jailson Silva", "1056925"));
         
-        System.out.println(javaColecoes.getAlunos());
+        //System.out.println(javaColecoes.getAlunos());
+        
+        System.out.println(javaColecoes.alunoMatriculado("Bruno Monteiro"));
     }
 
 }

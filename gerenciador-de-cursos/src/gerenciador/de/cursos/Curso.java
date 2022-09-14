@@ -1,6 +1,7 @@
 package gerenciador.de.cursos;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -46,5 +47,13 @@ public class Curso {
     
     public Set<Aluno> getAlunos() {
         return Collections.unmodifiableSet(alunos);
+    }
+    
+    public boolean alunoMatriculado(String nome) {
+        ArrayList listaNomeAlunos = new ArrayList<>();
+        for(Aluno aluno : alunos) {
+            listaNomeAlunos.add(aluno.getNome());
+        }
+        return listaNomeAlunos.contains(nome);
     }
 }
