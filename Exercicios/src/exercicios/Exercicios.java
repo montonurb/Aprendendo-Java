@@ -9,7 +9,21 @@ public class Exercicios {
         //graus.calcular(32.0);
         
         //EXERCICIO 02
+        Conjunto colecao = new Conjunto();
+        colecao.dados.put(1.70, "M");
+        colecao.dados.put(1.40, "M");
+        colecao.dados.put(1.51, "F");
+        colecao.dados.put(1.78, "F");
+        colecao.dados.put(1.80, "M");
+        colecao.dados.put(1.62, "F");
+        colecao.dados.put(1.60, "F");
+        colecao.dados.put(1.71, "M");
+        colecao.dados.put(1.58, "M");
+        colecao.dados.put(1.55, "F");
         
+        colecao.verificarMaiorEMenorAltura();
+        colecao.mediaAlturaHomens();
+        colecao.totalMulheres();
         
         //EXERCICIO 03
         //Salario mediaSalario = new Salario();
@@ -28,13 +42,13 @@ public class Exercicios {
         //quantidadeCavalos.informarDados(10, 1.8, 60);
         
         //EXERCICIO 07
-        Idade idadePessoas = new Idade();
-        idadePessoas.pessoas.put(21, "Leonardo Codeiro");
-        idadePessoas.pessoas.put(27, "Fabio Pimentel");
-        idadePessoas.pessoas.put(19, "Silvio Mattos");
-        idadePessoas.pessoas.put(23, "Romulo Henrique");
+        //Idade idadePessoas = new Idade();
+        //idadePessoas.pessoas.put(21, "Leonardo Codeiro");
+        //idadePessoas.pessoas.put(27, "Fabio Pimentel");
+        //idadePessoas.pessoas.put(19, "Silvio Mattos");
+        //idadePessoas.pessoas.put(23, "Romulo Henrique");
         
-        idadePessoas.buscarValores();
+        //idadePessoas.buscarValores();
         
         //System.out.println(idadePessoas.getPessoas());
     }  
