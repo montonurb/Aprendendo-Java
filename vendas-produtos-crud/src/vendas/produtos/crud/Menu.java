@@ -68,6 +68,7 @@ public class Menu {
                         System.out.println("Utilize o . (ponto) ao invés de , (virgula). | Ex.: 4.99 |");
                     }
                 } while (valor.contains(","));
+                
                 valorParaVenda = Double.parseDouble(valor);
                 cadastrarProduto(codigo, nome, quantidade, valorParaVenda);
                 break;

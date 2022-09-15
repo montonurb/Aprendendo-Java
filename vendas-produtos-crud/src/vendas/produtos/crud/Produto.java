@@ -4,7 +4,6 @@ import java.util.Map;
 
 public class Produto {
 
-    private int codigo;
     private String nome;
     private int quantidade;
     private double valorParaVenda;
@@ -15,4 +14,10 @@ public class Produto {
         this.valorParaVenda = valorParaVenda;
     }
 
+    @Override
+    public String toString() {
+        return  "Nome: " + this.nome + " | Quantidade: " + this.quantidade + " | Valor: " + this.valorParaVenda;
+    }
+
+    
 }
