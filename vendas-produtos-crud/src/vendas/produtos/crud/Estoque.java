@@ -14,4 +14,11 @@ public class Estoque {
         System.out.println("***********************\n");
         System.out.println(produtos);
     }
+    
+    public void visualizarEstoque() {
+        for(Map.Entry produto : produtos.entrySet()){
+            System.out.println(produto);
+        }
+        
+    }
 }
