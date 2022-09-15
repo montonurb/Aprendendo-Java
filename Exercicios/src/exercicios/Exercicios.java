@@ -24,7 +24,18 @@ public class Exercicios {
         //volume.informarDados(1.4, 2);
         
         //EXERCICIO 06
-        Cavalos quantidadeCavalos = new Cavalos();
-        quantidadeCavalos.informarDados(10, 1.8, 60);
+        //Cavalos quantidadeCavalos = new Cavalos();
+        //quantidadeCavalos.informarDados(10, 1.8, 60);
+        
+        //EXERCICIO 07
+        Idade idadePessoas = new Idade();
+        idadePessoas.pessoas.put(21, "Leonardo Codeiro");
+        idadePessoas.pessoas.put(27, "Fabio Pimentel");
+        idadePessoas.pessoas.put(19, "Silvio Mattos");
+        idadePessoas.pessoas.put(23, "Romulo Henrique");
+        
+        idadePessoas.buscarValores();
+        
+        //System.out.println(idadePessoas.getPessoas());
     }  
 }
