@@ -3,8 +3,11 @@ package vendas.produtos.crud;
 import java.util.Scanner;
 
 public class Menu {
-    
+
     Estoque estoque = new Estoque();
+    Carrinho carrinho = new Carrinho();
+    Cliente cliente = new Cliente();
+    Funcionario funcionario;
 
     public void menuInicial() {
         Scanner entrada = new Scanner(System.in);
@@ -52,29 +55,51 @@ public class Menu {
                 String nome;
                 int quantidade;
                 double valorParaVenda;
+                int produtoAutomatizado;
+
                 Scanner dadosEntradaProduto = new Scanner(System.in);
 
-                System.out.print("Informe o codigo do produto: ");
-                codigo = Integer.parseInt(dadosEntradaProduto.nextLine());
+                System.out.println("Cadastro automatizado?");
+                System.out.println("1 - SIM");
+                System.out.println("2 - NAO");
+                System.out.print("Opcao: ");
+                produtoAutomatizado = Integer.parseInt(dadosEntradaProduto.nextLine());
 
-                System.out.print("Informe o nome do produto: ");
-                nome = dadosEntradaProduto.nextLine();
+                if (produtoAutomatizado == 1) {
+                    estoque.produtosAutomatizados();
+                    
+                    System.out.println("************************");
+                    System.out.println("* Produtos cadastrado! *");
+                    System.out.println("************************");
+                    
+                    menuInicial();
+                } else if (produtoAutomatizado == 2) {
+                    System.out.print("Informe o codigo do produto: ");
+                    codigo = Integer.parseInt(dadosEntradaProduto.nextLine());
 
-                System.out.print("Informe a quantidade de itens do produto: ");
-                quantidade = Integer.parseInt(dadosEntradaProduto.nextLine());
+                    System.out.print("Informe o nome do produto: ");
+                    nome = dadosEntradaProduto.nextLine();
 
-                String valor;
+                    System.out.print("Informe a quantidade de itens do produto: ");
+                    quantidade = Integer.parseInt(dadosEntradaProduto.nextLine());
 
-                do {
+                    String valor;
+
                     System.out.print("Informe o valor unitario do produto: ");
                     valor = dadosEntradaProduto.nextLine();
                     if (valor.contains(",")) {
-                        System.out.println("Utilize o . (ponto) ao invés de , (virgula). | Ex.: 4.99 |");
+                        valor = valor.replace(",", ".");
                     }
-                } while (valor.contains(","));
 
-                valorParaVenda = Double.parseDouble(valor);
-                cadastrarProduto(codigo, nome, quantidade, valorParaVenda);
+                    valorParaVenda = Double.parseDouble(valor);
+                    cadastrarProduto(codigo, nome, quantidade, valorParaVenda);
+
+                    separador();
+                    menuInicial();
+                } else {
+                    System.out.println("opcao invalida!");
+                    menuInicial();
+                }
                 break;
             case 6:
                 cadastrarFuncionario();
@@ -90,21 +115,30 @@ public class Menu {
         }
     }
 
+    public void separador() {
+        System.out.println("\n***************************************");
+    }
+
     public void visualizarEstoque() {
         estoque.visualizarEstoque();
+        menuInicial();
     }
 
     public void realizarVenda() {
-        System.out.println("Comecar venda!");
+        estoque.visualizarEstoque();
+        carrinho.adicionarProdutoCarrinho(estoque);
+        menuInicial();
     }
 
     public void verCarrinho() {
-        System.out.println("****************CARRINHO****************");
+        System.out.println("***********ITENS DO CARRINHO***********");
         System.out.println("******************FIM******************");
+
+        menuInicial();
     }
 
     public void finalizarVenda() {
-        System.out.println("**************************VENDA********************");
+        System.out.println("******************ITENS DA VENDA***************");
         System.out.println("*****************VENDA FINALIZADA*****************");
     }
 
@@ -113,7 +147,7 @@ public class Menu {
     }
 
     public void cadastrarFuncionario() {
-        System.out.println("Cadastrando Funcionario..");
+
     }
 
     public void cadastrarCliente() {

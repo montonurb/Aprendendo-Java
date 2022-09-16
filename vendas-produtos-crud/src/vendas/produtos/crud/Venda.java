@@ -1,5 +1,6 @@
 package vendas.produtos.crud;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
