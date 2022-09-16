@@ -12,7 +12,7 @@ public class Menu {
     public void menuInicial() {
         Scanner entrada = new Scanner(System.in);
         int opcao = 0;
-
+        System.out.println("***********MENU***********");
         System.out.println("0 - Sair");
         System.out.println("1 - Ver estoque");
         System.out.println("2 - Realizar venda");
@@ -21,6 +21,7 @@ public class Menu {
         System.out.println("5 - Cadastrar produto");
         System.out.println("6 - Cadastrar funcionario");
         System.out.println("7 - Cadastrar cliente");
+        System.out.println("**************************");
 
         System.out.print("Opcao: ");
 
@@ -70,7 +71,7 @@ public class Menu {
                     
                     System.out.println("************************");
                     System.out.println("* Produtos cadastrado! *");
-                    System.out.println("************************");
+                    System.out.println("************************\n");
                     
                     menuInicial();
                 } else if (produtoAutomatizado == 2) {
@@ -125,13 +126,13 @@ public class Menu {
     }
 
     public void realizarVenda() {
-        estoque.visualizarEstoque();
         carrinho.adicionarProdutoCarrinho(estoque);
         menuInicial();
     }
 
     public void verCarrinho() {
         System.out.println("***********ITENS DO CARRINHO***********");
+        carrinho.getCarrinho();
         System.out.println("******************FIM******************");
 
         menuInicial();

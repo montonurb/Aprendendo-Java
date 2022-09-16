@@ -14,6 +14,30 @@ public class Produto {
         this.valorParaVenda = valorParaVenda;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public double getValorParaVenda() {
+        return valorParaVenda;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void setValorParaVenda(double valorParaVenda) {
+        this.valorParaVenda = valorParaVenda;
+    }
+
     @Override
     public String toString() {
         return  "Nome: " + this.nome + " | Quantidade: " + this.quantidade + " | Valor: " + this.valorParaVenda;
