@@ -1,9 +1,15 @@
 package com.montonurb.loja.produto;
 
+import java.time.LocalDate;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +21,10 @@ public class Produto {
     private String nome;
     private String descricao;
     private double preco;
+    private LocalDate dataCadastro = LocalDate.now();
+    
+    @ManyToOne
+    private Categoria categoria;
 
     public void setId(int id) {
         this.id = id;
@@ -32,9 +42,17 @@ public class Produto {
         this.preco = preco;
     }
     
-    public void cadastrarProduto(String nome, String descricao, double preco) {
+    public void cadastrarProduto(String nome, String descricao, double preco, Categoria categoria) {
         setNome(nome);
         setDescricao(descricao);
         setPreco(preco);
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
