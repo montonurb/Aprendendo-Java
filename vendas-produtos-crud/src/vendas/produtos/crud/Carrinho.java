@@ -13,7 +13,7 @@ public class Carrinho {
         int codigo;
         int quantidade;
         Produto produtoEscolhido;
-        int adicionarProduto;
+        int adicionarProduto = 0;
 
         do {
             estoque.visualizarEstoque();
@@ -30,26 +30,25 @@ public class Carrinho {
                         if (quantidade > produtoEscolhido.getQuantidade()) {
                             System.out.println("Quantidade maior do que o estoque.");
                         }
-                        System.out.println("Q: " + produtoEscolhido.getQuantidade());
                     } while (quantidade > estoque.produtos.get(codigo).getQuantidade());
                     estoque.diminuirEstoque(codigo, quantidade, produtoEscolhido);
                     produtosCarrinho.add(new Produto(produtoEscolhido.getNome(), quantidade, produtoEscolhido.getValorParaVenda()));
-                    System.out.println("CARRINHO: " + produtosCarrinho);
-
                 } else {
                     System.out.println("opcao invalida! Informe um codigo do produto que esteja cadastrado.");
                     estoque.visualizarEstoque();
                 }
             } while (!estoque.produtos.containsKey(codigo));
 
-            System.out.println("TESTEEEEE");
-            
             produtoAdicionado();
             
-            for(Map.Entry produtoObjeto : estoque.produtos.entrySet()) {
-                Object produto = produtoObjeto.getValue();
-                System.out.println("T: " + produtoObjeto.getValue());
-                
+            for(int idProduto : estoque.produtos.keySet()) {
+                Produto produtoAtual = estoque.produtos.get(idProduto);
+                if(produtoAtual.getQuantidade() <= 0) {
+                    estoque.produtos.remove(idProduto);
+                } else {
+                    System.out.println("NAO");
+                }
+                estoque.visualizarEstoque();
             }
 
             System.out.println("Deseja adicionar outro produto?");

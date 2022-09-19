@@ -26,7 +26,7 @@ public class Menu {
         System.out.print("Opcao: ");
 
         try {
-            opcao = Integer.parseInt(entrada.next());
+            opcao = Integer.parseInt(entrada.nextLine());
             escolhaDoUsuario(opcao);
         } catch (Exception e) {
             System.out.println(e + " nao e um numero inteiro.");
