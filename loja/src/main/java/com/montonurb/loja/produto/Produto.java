@@ -41,6 +41,30 @@ public class Produto {
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
     
     public void cadastrarProduto(String nome, String descricao, double preco, Categoria categoria) {
         setNome(nome);

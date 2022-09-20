@@ -18,4 +18,8 @@ public class CategoriaDao {
         categoria = manager.merge(categoria);
         this.manager.remove(categoria);
     }
+    
+    public Categoria buscarPorId(int id) {
+        return manager.find(Categoria.class, id);
+    }
 }
