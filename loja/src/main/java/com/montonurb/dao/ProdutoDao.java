@@ -13,4 +13,9 @@ public class ProdutoDao {
     public void cadastrar(Produto produto) {
         this.manager.persist(produto);
     }
+    
+    public void remover(Produto produto) {
+        produto = manager.merge(produto);
+        this.manager.remove(produto);
+    }
 }
