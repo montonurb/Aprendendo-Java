@@ -7,23 +7,14 @@
     </h:head>
     <h:body>
         <h:form>
-            <h1>Novo Livro</h1>
+            <h1>Novo Autor</h1>
             <fieldset>
-                <legend>Dados do Livro </legend>
+                <legend>Dados do Autor</legend>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Titulo: " for="titulo"/>
-                    <h:inputText id="titulo" value="#{livroBean.livro.titulo}" />
+                    <h:outputLabel value="Nome: " for="nome"/>
+                    <h:inputText id="nome" value="#{autorBean.autor.nome}" />
 
-                    <h:outputLabel value="ISBN: " for="isbn" />
-                    <h:inputText id="isbn" value="#{livroBean.livro.isbn}" />
-
-                    <h:outputLabel value="Preço: " for="preco" />
-                    <h:inputText id="preco" value="#{livroBean.livro.preco}" />
-
-                    <h:outputLabel value="Data do Lançamento: " for="dataLancamento" />
-                    <h:inputText id="dataLancamento" value="#{livroBean.livro.dataLancamento}" />
-
-                    <h:commandButton value="Cadastrar" action="#{livroBean.salvar() }" />
+                    <h:commandButton value="Cadastrar" action="#{autorBean.salvar() }" />
                 </h:panelGrid>
 
             </fieldset>
@@ -31,4 +22,3 @@
     </h:body>
 </html>
 
-    
