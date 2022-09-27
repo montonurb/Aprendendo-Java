@@ -1,28 +1,29 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Livro {
     
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-
     private String titulo;
     private String isbn;
     private double preco;
-    private String dataLancamento;
+    @Temporal(TemporalType.DATE)
+    private Calendar dataLancamento = Calendar.getInstance();
     
     @ManyToMany
     private List<Autor> autores = new ArrayList<Autor>();
-
-    //GETTERS AND SETTERS
 
     public List<Autor> getAutores() {
         return autores;
@@ -44,7 +45,7 @@ public class Livro {
         return preco;
     }
 
-    public String getDataLancamento() {
+    public Calendar getDataLancamento() {
         return dataLancamento;
     }
 
@@ -60,7 +61,7 @@ public class Livro {
         this.preco = preco;
     }
 
-    public void setDataLancamento(String dataLancamento) {
+    public void setDataLancamento(Calendar dataLancamento) {
         this.dataLancamento = dataLancamento;
     }
     

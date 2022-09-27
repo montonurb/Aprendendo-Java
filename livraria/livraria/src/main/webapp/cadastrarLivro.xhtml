@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
@@ -12,18 +13,18 @@
             <fieldset>
                 <legend>Dados do Livro</legend>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Titulo: " for="titulo"/>
-                    <h:inputText id="titulo" value="#{livroBean.livro.titulo}" />
+                    <p:outputLabel value="Titulo: " for="titulo" />
+                    <p:inputText id="titulo" value="#{livroBean.livro.titulo}" />
 
-                    <h:outputLabel value="ISBN: " for="isbn" />
-                    <h:inputText id="isbn" value="#{livroBean.livro.isbn}" />
+                    <p:outputLabel value="ISBN: " for="isbn" />
+                    <p:inputText id="isbn" value="#{livroBean.livro.isbn}" />
 
-                    <h:outputLabel value="Preço: " for="preco" />
-                    <h:inputText id="preco" value="#{livroBean.livro.preco}" />
+                    <p:outputLabel value="Preço: " for="preco" />
+                    <p:inputText id="preco" value="#{livroBean.livro.preco}" />
 
-                    <h:outputLabel value="Data do Lançamento: " for="dataLancamento" />
-                    <h:inputText id="dataLancamento" value="#{livroBean.livro.dataLancamento}" />
-
+                    <p:outputLabel value="Data do Lançamento: " for="dataLancamento" />
+                    <p:inputText id="dataLancamento" value="#{livroBean.livro.dataLancamento}" />
+                    <!--<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />-->
                 </h:panelGrid>
 
             </fieldset>
@@ -31,11 +32,11 @@
             <fieldset>
                 <legend>Dados do Autor</legend>
                 <h:panelGrid columns="3">
-                    <h:outputLabel value="Selecione o autor: " for="autor" />
-                    <h:selectOneMenu  value="#{livroBean.autorId}">
+                    <h:outputLabel for="autor" value="Selecione o autor: " />
+                    <p:selectOneMenu  value="#{livroBean.autorId}" required="true" requiredMessage="Título é obrigatório!">
                         <f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor.id}" />
-                    </h:selectOneMenu>
-                    <h:commandButton value="Adicionar" action="#{livroBean.gravarAutor()}" />
+                    </p:selectOneMenu>
+                    <p:commandButton value="Adicionar" action="#{livroBean.gravarAutor()}" />
                 </h:panelGrid>
 
                 <h:dataTable value="#{livroBean.autoresDoLivro}" var="autor">
@@ -44,7 +45,18 @@
                     </h:column>
                 </h:dataTable>
             </fieldset>
-            <h:commandButton value="Cadastrar" action="#{livroBean.salvar()}" />
+            <p:commandButton value="Cadastrar" action="#{livroBean.salvar()}" />
+        </h:form>
+
+        <h:form>
+            <fieldset >
+                <legend>Livros Cadastrados</legend>
+                <h:dataTable>
+                    <h:column>
+                        <h:outputText />
+                    </h:column>
+                </h:dataTable>
+            </fieldset>
         </h:form>
     </h:body>
 </html>

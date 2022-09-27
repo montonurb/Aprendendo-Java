@@ -2,9 +2,11 @@ package livraria;
 
 import dao.DAO;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import modelo.Livro;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import modelo.Autor;
 
 @ManagedBean
@@ -43,7 +45,7 @@ public class LivroBean {
         System.out.println("Gravando livro: " + this.livro.getTitulo());
 
         if (livro.getAutores().isEmpty()) {
-            throw new RuntimeException("Livro deve ter ao menos um autor.");
+            FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Livro deve ter pelo menos um autor."));
         }
 
         new DAO(Livro.class).adiciona(this.livro);
