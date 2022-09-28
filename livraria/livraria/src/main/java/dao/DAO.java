@@ -1,9 +1,9 @@
 package dao;
 
 import java.util.List;
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import modelo.Autor;
+import modelo.Livro;
 
 public class DAO<T> {
 
@@ -57,8 +57,23 @@ public class DAO<T> {
 
         return instancia;
     }
+    
+    public List<Livro> pegarLivros() {
+        EntityManager manager = new JPAUtil().getEntityManager();
+        manager.getTransaction().begin();
+        
+        String sql = "SELECT l from Livro l";
+        List<Livro> livros = manager.createQuery(sql, Livro.class).getResultList();
+        
+        for(Livro livro : livros) {
+            System.out.println("ID: " + livro.getId() + ", " + livro.getTitulo());
+        }
+        
+        manager.close();
+        return livros;
+    }
 
-    public List<Autor> listaTodos() {
+    public List<Autor> pegarAutores() {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
 

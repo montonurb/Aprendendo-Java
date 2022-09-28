@@ -3,18 +3,24 @@ package livraria;
 import dao.DAO;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import modelo.Livro;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import modelo.Livro;
 import javax.faces.context.FacesContext;
 import modelo.Autor;
 
 @ManagedBean
-@ViewScoped
 public class LivroBean {
 
     private Livro livro = new Livro();
     private Integer autorId;
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
 
     public Integer getAutorId() {
         return autorId;
@@ -24,12 +30,12 @@ public class LivroBean {
         this.autorId = autorId;
     }
 
-    public Livro getLivro() {
-        return livro;
+    public List<Livro> getLivros() {
+        return new DAO<>(Livro.class).pegarLivros();
     }
 
     public List<Autor> getAutores() {
-        return new DAO(Autor.class).listaTodos();
+        return new DAO<>(Autor.class).pegarAutores();
     }
 
     public List<Autor> getAutoresDoLivro() {
@@ -42,13 +48,11 @@ public class LivroBean {
     }
 
     public void salvar() {
-        System.out.println("Gravando livro: " + this.livro.getTitulo());
-
         if (livro.getAutores().isEmpty()) {
             FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Livro deve ter pelo menos um autor."));
         }
 
-        new DAO(Livro.class).adiciona(this.livro);
+        new DAO<>(Livro.class).adiciona(this.livro);
         this.livro = new Livro();
     }
 }
