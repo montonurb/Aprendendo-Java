@@ -40,6 +40,7 @@
                     <f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor.id}" />
                 </p:selectOneMenu>
                 <p:commandButton value="Adicionar" action="#{livroBean.gravarAutor}" />
+                <p:commandButton action="cadastrarAutor.xhtml" value="Cadastrar Autor" />
 
                 <h:dataTable value="#{livroBean.autoresDoLivro}" var="autor">
                     <h:column>
