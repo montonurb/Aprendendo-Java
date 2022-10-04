@@ -43,9 +43,10 @@ public class LivroBean {
     }
 
     public void gravarAutor() {
+        System.out.println("TESTE!::::::");
         Autor autor = new DAO<>(Autor.class).buscaPorId(this.autorId);
         this.livro.adicionarAutor(autor);
-    }
+}
 
     public void salvar() {
         if (livro.getAutores().isEmpty()) {
@@ -54,5 +55,10 @@ public class LivroBean {
 
         new DAO<>(Livro.class).adiciona(this.livro);
         this.livro = new Livro();
+    }
+    
+    public String irParaCadastrarAutor() {
+        System.out.println("TESTE");
+        return "cadastrarAutor?faces-redirect=true";
     }
 }

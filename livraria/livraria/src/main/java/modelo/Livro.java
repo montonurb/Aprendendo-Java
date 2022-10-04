@@ -38,6 +38,7 @@ public class Livro implements Serializable {
     }
 
     public void adicionarAutor(Autor autor) {
+        System.out.println("TESTE!!!");
         this.autores.add(autor);
     }
 

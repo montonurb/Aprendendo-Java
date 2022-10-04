@@ -11,11 +11,8 @@
             <h1>Página Inicial</h1>
 
             <h:panelGrid columns="2">
-
-                <p:commandButton action="cadastrarLivro.xhtml" value="Cadastrar Livro"/>
-
-                <p:commandButton action="cadastrarAutor.xhtml" value="Cadastrar Autor" />
-
+                <p:commandButton action="#{autorBean.irParaCadastrarLivro()}" value="Cadastrar Livro" />
+                <p:commandButton action="#{livroBean.irParaCadastrarAutor()}" value="Cadastrar Autor"/>
             </h:panelGrid>
 
         </h:form>

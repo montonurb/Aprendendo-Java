@@ -21,4 +21,8 @@ public class AutorBean {
         new DAO<>(Autor.class).adiciona(this.autor);
         this.autor = new Autor();
     }
+    
+    public String irParaCadastrarLivro() {
+        return "cadastrarLivro?faces-redirect=true";
+    }
 }

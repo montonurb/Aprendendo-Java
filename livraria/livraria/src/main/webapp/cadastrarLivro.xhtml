@@ -10,13 +10,15 @@
     <h:body>
         <h1>Novo Livro</h1>
         <h:form>
-            <p:messages/>
+            <h:messages id="messages" />
             <fieldset>
                 <legend>Dados do Livro</legend>
                 <h:panelGrid columns="2">
 
                     <p:outputLabel value="Titulo" for="titulo"/>
-                    <p:inputText id="titulo" value="#{livroBean.livro.titulo}" />
+                    <p:inputText id="titulo" value="#{livroBean.livro.titulo}" required="true" requiredMessage="Titulo obrigatorio!">
+                        <f:ajax event="blur" render="messages" />
+                    </p:inputText>
 
                     <p:outputLabel value="ISBN" for="isbn" />
                     <p:inputText id="isbn" value="#{livroBean.livro.isbn}" />
@@ -33,26 +35,37 @@
             </fieldset>
 
             <fieldset>
+
                 <legend>Dados do Autor</legend>
 
-                <h:outputLabel value="Selecione o autor: " for="autor" />
-                <p:selectOneMenu  value="#{livroBean.autorId}">
-                    <f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor.id}" />
-                </p:selectOneMenu>
-                <p:commandButton value="Adicionar" action="#{livroBean.gravarAutor}" />
-                <p:commandButton action="cadastrarAutor.xhtml" value="Cadastrar Autor" />
+                <h:panelGrid columns="2">
 
-                <h:dataTable value="#{livroBean.autoresDoLivro}" var="autor">
+                    <h:outputLabel value="Selecione o autor: " for="autor" />
+                    <p:selectOneMenu  value="#{livroBean.autorId}" id="autor">
+                        <f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor.id}" />
+                    </p:selectOneMenu>
+
+                    <p:commandButton value="Adicionar" action="#{livroBean.gravarAutor}">
+                        <f:ajax execute="autor" render="tabelaAutores" />
+                    </p:commandButton>
+
+                    <p:commandButton value="Cadastrar Autor" action="#{livroBean.irParaCadastrarAutor()}">
+                    </p:commandButton>
+                </h:panelGrid>
+
+                <h:dataTable value="#{livroBean.autoresDoLivro}" var="autor" id="tabelaAutores">
                     <h:column>
                         <h:outputText value="#{autor.nome}" />
                     </h:column>
                 </h:dataTable>
             </fieldset>
 
-            <p:commandButton value="Cadastrar" action="#{livroBean.salvar}" />
+            <p:commandButton value="Cadastrar" action="#{livroBean.salvar}" >
+                <f:ajax execute="@form" render="@form :tabelaLivros" />
+            </p:commandButton>
         </h:form>
 
-        <h:dataTable value="#{livroBean.livros}" var="livro">
+        <h:dataTable value="#{livroBean.livros}" var="livro" id="tabelaLivros">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 <h:outputText value="#{livro.id}" />

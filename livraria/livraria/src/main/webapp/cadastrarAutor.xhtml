@@ -16,7 +16,7 @@
                     <p:inputText id="nome" value="#{autorBean.autor.nome}" />
 
                     <p:commandButton value="Cadastrar" action="#{autorBean.salvar}" />
-                    <p:commandButton action="cadastrarLivro.xhtml" value="Cadastrar Livro"/>
+                    <p:commandButton action="#{autorBean.irParaCadastrarLivro()}" value="Cadastrar Livro"/>
                 </h:panelGrid>
 
             </fieldset>
