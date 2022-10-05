@@ -18,6 +18,7 @@ public class AutorBean {
     }
 
     public void salvar() {
+        this.autor.getNome();
         new DAO<>(Autor.class).adiciona(this.autor);
         this.autor = new Autor();
     }

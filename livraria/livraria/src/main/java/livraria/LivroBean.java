@@ -43,9 +43,10 @@ public class LivroBean {
     }
 
     public void gravarAutor() {
-        System.out.println("TESTE!::::::");
+        System.out.println("Gravando livro.");
         Autor autor = new DAO<>(Autor.class).buscaPorId(this.autorId);
         this.livro.adicionarAutor(autor);
+        System.out.println("Livro gravado.");
 }
 
     public void salvar() {
@@ -57,8 +58,13 @@ public class LivroBean {
         this.livro = new Livro();
     }
     
+    public void remover(Livro livro) {
+        System.out.println("Removendo livro...");
+        new DAO<>(Livro.class).remove(livro);
+        System.out.println("Removou!");
+    }
+    
     public String irParaCadastrarAutor() {
-        System.out.println("TESTE");
         return "cadastrarAutor?faces-redirect=true";
     }
 }
