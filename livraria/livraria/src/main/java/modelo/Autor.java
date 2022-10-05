@@ -9,7 +9,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Autor implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;

@@ -14,11 +14,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Livro implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-
     private String titulo;
     private String isbn;
     private double preco;
