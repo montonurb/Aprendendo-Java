@@ -103,7 +103,7 @@
 
                     <h:column>
                         <f:facet name="header">Remover</f:facet>
-                        <p:commandButton value="Remover" action="#{livroBean.remover(livro)}" >
+                        <p:commandButton value="Remover" update="@form" action="#{livroBean.remover(livro)}" >
                             <f:ajax execute="@form" render="tabelaLivros" />
                         </p:commandButton>
                     </h:column>
