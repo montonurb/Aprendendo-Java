@@ -13,7 +13,7 @@
         <ui:define name="tituloBody" >Novo Livro</ui:define>
 
         <ui:define name="conteudo">
-            <h:form>
+            <h:form id="dadosLivro">
                 <p:messages id="messages" />
                 <fieldset>
                     <legend>Dados do Livro</legend>
@@ -62,7 +62,7 @@
                     </p:dataTable>
                 </fieldset>
 
-                <p:commandButton value="Cadastrar" action="#{livroBean.salvar}" >
+                <p:commandButton value="Cadastrar" update="@form :dadosLivro" action="#{livroBean.salvar}" >
                     <f:ajax execute="@form" render="@form :formTabelaLivros:tabelaLivros" />
                 </p:commandButton>
             </h:form>
@@ -98,14 +98,12 @@
 
                     <h:column>
                         <f:facet name="header">Editar</f:facet>
-                        <p:commandButton value="Editar" />
+                        <p:commandButton value="Editar" update="@form :dadosLivro" actionListener="#{livroBean.editar(livro)}" />
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">Remover</f:facet>
-                        <p:commandButton value="Remover" update="@form" action="#{livroBean.remover(livro)}" >
-                            <f:ajax execute="@form" render="tabelaLivros" />
-                        </p:commandButton>
+                        <p:commandButton value="Remover" update="@form" action="#{livroBean.remover(livro)}" />
                     </h:column>
                 </h:dataTable>
             </h:form>

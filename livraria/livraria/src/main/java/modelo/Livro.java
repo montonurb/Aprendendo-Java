@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Livro implements Serializable {
     @Temporal(TemporalType.DATE)
     private Calendar dataLancamento = Calendar.getInstance();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Autor> autores = new ArrayList<Autor>();
 
     public List<Autor> getAutores() {
@@ -37,9 +38,6 @@ public class Livro implements Serializable {
 
     public void adicionarAutor(Autor autor) {
         this.autores.add(autor);
-    }
-
-    public Livro() {
     }
 
     public Integer getId() {

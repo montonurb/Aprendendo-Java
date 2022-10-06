@@ -2,10 +2,8 @@ package livraria;
 
 import dao.DAO;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import modelo.Livro;
-import javax.faces.context.FacesContext;
 import modelo.Autor;
 
 @ManagedBean
@@ -43,27 +41,38 @@ public class LivroBean {
     }
 
     public void gravarAutor() {
-        System.out.println("Gravando livro.");
         Autor autor = new DAO<>(Autor.class).buscaPorId(this.autorId);
         this.livro.adicionarAutor(autor);
-        System.out.println("Livro gravado.");
-}
+    }
 
     public void salvar() {
+        /*
         if (livro.getAutores().isEmpty()) {
             FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Livro deve ter pelo menos um autor."));
-        }
+        }*/
+        
+        System.out.println("ID SALVAR: " + this.livro.getId());
 
-        new DAO<>(Livro.class).adiciona(this.livro);
+        if (this.livro.getId() == null) {
+            System.out.println("Novo livro!");
+            new DAO<>(Livro.class).adiciona(this.livro);
+        } else {
+            System.out.println("Editar livro!");
+            new DAO<>(Livro.class).atualiza(this.livro);
+        }
+        
         this.livro = new Livro();
     }
-    
-    public void remover(Livro livro) {
-        System.out.println("Removendo livro...");
-        new DAO<>(Livro.class).remove(livro);
-        System.out.println("Removou!");
+
+    public void editar(Livro livro) {
+        this.livro = livro;
+        remover(livro);
     }
-    
+
+    public void remover(Livro livro) {
+        new DAO<>(Livro.class).remove(livro);
+    }
+
     public String irParaCadastrarAutor() {
         return "cadastrarAutor?faces-redirect=true";
     }
