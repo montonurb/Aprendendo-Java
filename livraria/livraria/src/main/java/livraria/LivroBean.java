@@ -50,17 +50,7 @@ public class LivroBean {
         if (livro.getAutores().isEmpty()) {
             FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Livro deve ter pelo menos um autor."));
         }*/
-        
-        System.out.println("ID SALVAR: " + this.livro.getId());
-
-        if (this.livro.getId() == null) {
-            System.out.println("Novo livro!");
-            new DAO<>(Livro.class).adiciona(this.livro);
-        } else {
-            System.out.println("Editar livro!");
-            new DAO<>(Livro.class).atualiza(this.livro);
-        }
-        
+        new DAO<>(Livro.class).adiciona(this.livro);
         this.livro = new Livro();
     }
 
