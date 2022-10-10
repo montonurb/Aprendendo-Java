@@ -1,20 +1,20 @@
 package modelo;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@ManagedBean
-public class Autor implements Serializable {
+public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
-    private String nome;
+    Integer id;
+    String nome;
+    String email;
+    String senha;
 
     public Integer getId() {
         return id;
@@ -31,4 +31,21 @@ public class Autor implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
 }

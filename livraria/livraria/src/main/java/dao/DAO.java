@@ -58,6 +58,14 @@ public class DAO<T> {
         return instancia;
     }
     
+    public T buscarPorEmail(String email) {
+        EntityManager manager = new JPAUtil().getEntityManager();
+        T instancia = manager.find(classe, email);
+        manager.close();
+        
+        return instancia;
+    }
+    
     public List<Livro> pegarLivros() {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
