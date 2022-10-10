@@ -9,7 +9,8 @@ import modelo.Autor;
 public class AutorBean {
 
     private Autor autor = new Autor();
-
+    private Integer autorId;
+    
     public Autor getAutor() {
         return autor;
     }
@@ -18,6 +19,18 @@ public class AutorBean {
         this.autor = autor;
     }
 
+    public Integer getAutorId() {
+        return autorId;
+    }
+
+    public void setAutorId(Integer autorId) {
+        this.autorId = autorId;
+    }
+    
+    public void carregarAutorId() {
+        this.autor = new DAO<>(Autor.class).buscaPorId(autorId);
+    }
+    
     public void salvar() {
         this.autor.getNome();
         new DAO<>(Autor.class).adiciona(this.autor);

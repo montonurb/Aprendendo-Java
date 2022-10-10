@@ -7,6 +7,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:composition template="_template.xhtml">
+        
+        <f:metadata>
+            <f:viewParam name="livroId" value="#{livroBean.livroId}" />
+            <f:viewAction action="#{livroBean.carregarLivroId()}" if="#{param.livroId != null}"/>
+        </f:metadata>
 
         <ui:define name="tituloHead" >Cadastrar Livro</ui:define>
 
@@ -69,11 +74,6 @@
 
             <h:form id="formTabelaLivros">
                 <h:dataTable value="#{livroBean.livros}" var="livro" id="tabelaLivros">
-                    <h:column>
-                        <f:facet name="header">ID</f:facet>
-                        <h:outputText value="#{livro.id}" />
-                    </h:column>
-
                     <h:column>
                         <f:facet name="header">Título</f:facet>
                         <h:outputText value="#{livro.titulo}" />

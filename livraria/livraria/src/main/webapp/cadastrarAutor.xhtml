@@ -8,6 +8,10 @@
 
     <ui:composition template="_template.xhtml">
 
+        <f:metadata>
+            <f:viewParam name="autorId" value="#{autorBean.autorId}" />
+            <f:viewAction action="#{autorBean.carregarAutorId}" if="#{param.autorId != null}" />
+        </f:metadata>
         <ui:define name="tituloHead">Cadastrar Autor</ui:define>
 
         <ui:define name="tituloBody">Novo Autor</ui:define>
@@ -26,14 +30,14 @@
 
                 </fieldset>
             </h:form>
-            
+
             <h:form id="formTabelaAutores">
                 <h:dataTable value="#{autorBean.autores}" var="autor" id="tabelaAutores">
                     <h:column>
                         <f:facet name="header">Autor</f:facet>
                         <h:outputText value="#{autor.nome}" />
                     </h:column>
-                    
+
                     <h:column>
                         <f:facet name="header">Editar</f:facet>
                         <p:commandButton value="Editar" update="@form dadosAutor" actionListener="#{autorBean.editar(autor)}" />
@@ -44,7 +48,7 @@
                         <p:commandButton value="Remover" update="@form dadosAutor" action="#{autorBean.remover(autor)}" />
                     </h:column>
                 </h:dataTable>
-                
+
             </h:form>
         </ui:define>
     </ui:composition>

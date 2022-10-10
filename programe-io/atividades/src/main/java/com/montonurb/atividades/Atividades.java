@@ -1,7 +1,9 @@
 package com.montonurb.atividades;
 
 public class Atividades {
+
     public static void main(String[] args) {
+        /* ATIVIDADE 01
         Cliente novoCliente = new Cliente();
         
         novoCliente.nome = "Bruno Monteiro";
@@ -16,5 +18,14 @@ public class Atividades {
         System.out.println(idade + " anos");
         String maioridade = novoCliente.verificarMaioridade(novoCliente.anoDeNascimento);
         System.out.println(maioridade);
+         */
+        /*ATIVIDADE 02*/
+        Produto novoProduto = new Produto();
+        
+        novoProduto.nome = "Lapis";
+        novoProduto.preco = 1.0;
+        novoProduto.quantidade = 100;
+        
+        
     }
 }
