@@ -11,10 +11,10 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Integer id;
-    String nome;
-    String email;
-    String senha;
+    private Integer id;
+    private String nome;
+    private String email;
+    private String senha;
 
     public Integer getId() {
         return id;

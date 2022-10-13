@@ -62,7 +62,7 @@ public class DAO<T> {
         EntityManager manager = new JPAUtil().getEntityManager();
         T instancia = manager.find(classe, email);
         manager.close();
-        
+        System.out.println(">>>" + instancia);
         return instancia;
     }
     

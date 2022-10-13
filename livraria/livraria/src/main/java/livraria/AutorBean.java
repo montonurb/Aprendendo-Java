@@ -31,10 +31,12 @@ public class AutorBean {
         this.autor = new DAO<>(Autor.class).buscaPorId(autorId);
     }
     
-    public void salvar() {
+    public String salvar() {
         this.autor.getNome();
         new DAO<>(Autor.class).adiciona(this.autor);
         this.autor = new Autor();
+        
+        return "inicio?faces-redirect-true";
     }
     
     public List<Autor> getAutores() {

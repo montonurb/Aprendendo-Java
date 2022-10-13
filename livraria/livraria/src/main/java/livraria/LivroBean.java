@@ -58,13 +58,11 @@ public class LivroBean {
         this.livro.adicionarAutor(autor);
     }
 
-    public void salvar() {
-        /*
-        if (livro.getAutores().isEmpty()) {
-            FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Livro deve ter pelo menos um autor."));
-        }*/
+    public String salvar() {
         new DAO<>(Livro.class).adiciona(this.livro);
         this.livro = new Livro();
+        
+        return "inicio?faces-redirect=true";
     }
 
     public void editar(Livro livro) {

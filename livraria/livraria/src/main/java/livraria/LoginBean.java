@@ -1,26 +1,35 @@
 package livraria;
 
+import dao.DAO;
+import dao.UsuarioDAO;
+import javax.faces.bean.ManagedBean;
+import modelo.Usuario;
+
+@ManagedBean
 public class LoginBean {
-    private String email;
-    private String senha;
 
-    public String getEmail() {
-        return email;
+    private Usuario usuario = new Usuario();
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public String fazerLogin() {
+        System.out.println("BUSCANDO " + this.usuario.getEmail() + "...");
+        boolean logado = new UsuarioDAO().login(this.usuario);
+        System.out.println(">>>" + logado);
+        if (logado) {
+            return "inicio?faces-redirect=true";
+        } else {
+            return "login?faces-redirect=false";
+        }
     }
     
-    public void fazerLogin(String email, String senha) {
-        
+    public String irParaLogin() {
+        return "login?faces-redirect=true";
     }
 }
