@@ -62,7 +62,6 @@ public class DAO<T> {
         EntityManager manager = new JPAUtil().getEntityManager();
         T instancia = manager.find(classe, email);
         manager.close();
-        System.out.println(">>>" + instancia);
         return instancia;
     }
     
@@ -72,10 +71,6 @@ public class DAO<T> {
         
         String sql = "SELECT l from Livro l";
         List<Livro> livros = manager.createQuery(sql, Livro.class).getResultList();
-        
-        for(Livro livro : livros) {
-            System.out.println("ID: " + livro.getId() + ", " + livro.getTitulo());
-        }
         
         manager.close();
         return livros;
