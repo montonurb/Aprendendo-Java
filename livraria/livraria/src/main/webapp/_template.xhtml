@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>
             <ui:insert name="tituloHead"></ui:insert>
@@ -17,4 +18,9 @@
             </div>
         </div>
     </body>
+    <footer>
+        <h:form rendered="#{usuarioLogado != null}">
+            <p:commandButton action="#{loginBean.deslogar()}" value="Sair" icon="pi pi-sign-out" />
+        </h:form>
+    </footer>
 </html>

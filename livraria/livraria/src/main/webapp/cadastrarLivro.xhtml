@@ -51,11 +51,11 @@
                             <f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor.id}" />
                         </p:selectOneMenu>
 
-                        <p:commandButton value="Adicionar" process="@this" action="#{livroBean.gravarAutor}">
+                        <p:commandButton value="Adicionar" process="@this" action="#{livroBean.gravarAutor}" icon="pi pi-plus">
                             <f:ajax execute="autor" render="tabelaAutores" />
                         </p:commandButton>
 
-                        <p:commandButton value="Cadastrar Autor" action="#{livroBean.irParaCadastrarAutor()}" immediate="true">
+                        <p:commandButton value="Cadastrar Autor" action="#{livroBean.irParaCadastrarAutor()}" immediate="true" icon="pi pi-user-plus">
                         </p:commandButton>
 
                     </h:panelGrid>
@@ -67,7 +67,7 @@
                     </p:dataTable>
                 </fieldset>
 
-                <p:commandButton value="Cadastrar" update="@form :dadosLivro" action="#{livroBean.salvar}" >
+                <p:commandButton value="Cadastrar" update="@form :dadosLivro" action="#{livroBean.salvar}" icon="pi pi-save">
                     <f:ajax execute="@form" render="@form :formTabelaLivros:tabelaLivros" />
                 </p:commandButton>
             </h:form>
@@ -98,12 +98,12 @@
 
                     <h:column>
                         <f:facet name="header">Editar</f:facet>
-                        <p:commandButton value="Editar" update="@form :dadosLivro" actionListener="#{livroBean.editar(livro)}" />
+                        <p:commandButton value="Editar" update="@form :dadosLivro" actionListener="#{livroBean.editar(livro)}" icon="pi pi-pencil"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">Remover</f:facet>
-                        <p:commandButton value="Remover" update="@form" action="#{livroBean.remover(livro)}" />
+                        <p:commandButton value="Remover" update="@form" action="#{livroBean.remover(livro)}" icon="pi pi-times"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

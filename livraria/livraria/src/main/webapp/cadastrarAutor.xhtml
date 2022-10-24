@@ -18,14 +18,15 @@
 
         <ui:define name="conteudo">
             <h:form id="dadosAutor">
+                <p:messages />
                 <fieldset>
                     <legend>Dados do Autor</legend>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Nome:" for="nome" />
-                        <p:inputText id="nome" value="#{autorBean.autor.nome}" />
+                        <p:inputText id="nome" value="#{autorBean.autor.nome}" required="true" requiredMessage="Campo não pode ficar em branco." />
 
-                        <p:commandButton value="Cadastrar" update="@form :formTabelaAutores:tabelaAutores" action="#{autorBean.salvar}" />
-                        <p:commandButton action="#{autorBean.irParaCadastrarLivro()}" value="Cadastrar Livro"/>
+                        <p:commandButton value="Cadastrar" update="@form :formTabelaAutores:tabelaAutores" action="#{autorBean.salvar}" icon="pi pi-save"/>
+                        <p:commandButton icon="pi pi-book" action="#{autorBean.irParaCadastrarLivro()}" value="Cadastrar Livro"/>
                     </h:panelGrid>
 
                 </fieldset>
@@ -40,12 +41,12 @@
 
                     <h:column>
                         <f:facet name="header">Editar</f:facet>
-                        <p:commandButton value="Editar" update="@form dadosAutor" actionListener="#{autorBean.editar(autor)}" />
+                        <p:commandButton value="Editar" update="@form dadosAutor" actionListener="#{autorBean.editar(autor)}" icon="pi pi-pencil"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">Remover</f:facet>
-                        <p:commandButton value="Remover" update="@form dadosAutor" action="#{autorBean.remover(autor)}" />
+                        <p:commandButton value="Remover" update="@form dadosAutor" action="#{autorBean.remover(autor)}" icon="pi pi-times"/>
                     </h:column>
                 </h:dataTable>
 
