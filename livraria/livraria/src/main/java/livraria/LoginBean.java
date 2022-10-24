@@ -31,8 +31,12 @@ public class LoginBean {
             return "login?faces-redirect=false";
         }
     }
-    
-    public String irParaLogin() {
+
+    public String deslogar() {
+        System.out.println("Deslogar!");
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getSessionMap().remove("usuarioLogado");
+
         return "login?faces-redirect=true";
     }
 }
