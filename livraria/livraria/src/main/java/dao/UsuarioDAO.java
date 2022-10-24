@@ -8,7 +8,7 @@ public class UsuarioDAO {
 
     public boolean login(Usuario usuario) {
         EntityManager manager = new JPAUtil().getEntityManager();
-        
+
         TypedQuery<Usuario> query = manager.createQuery("select u from Usuario u where u.email = :pEmail and u.senha = :pSenha", Usuario.class);
 
         query.setParameter("pEmail", usuario.getEmail());
