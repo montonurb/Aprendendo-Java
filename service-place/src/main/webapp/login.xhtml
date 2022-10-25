@@ -23,6 +23,7 @@
                     <p:outputLabel value="Senha: " for="senha" />
                     <p:inputText id="senha" value="#{loginBean.funcionario.senha}" required="true" requiredMessage="Informe a senha." >
                         <f:ajax event="blur" render="mensagens" />
+                        <f:passThroughAttribute name="type" value="password" />
                     </p:inputText>
 
                     <p:commandButton value="Logar" action="#{loginBean.fazerLogin()}" icon="pi pi-sign-in"/>

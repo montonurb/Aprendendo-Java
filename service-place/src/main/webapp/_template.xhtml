@@ -8,7 +8,7 @@
             <ui:insert name="tituloHead"></ui:insert>
         </title>
         <h:form rendered="#{funcionarioLogado != null}" >
-            <p:commandButton value="Sair" icon="pi pi-sign-out" />
+            <p:commandButton value="Sair" action="#{loginBean.fazerLogout()}" icon="pi pi-sign-out" />
         </h:form>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>

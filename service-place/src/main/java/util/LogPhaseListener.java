@@ -11,8 +11,7 @@ public class LogPhaseListener implements PhaseListener {
 
     @Override
     public void afterPhase(PhaseEvent event) {
-        /*
-        FacesContext context = FacesContext.getCurrentInstance();
+        FacesContext context = event.getFacesContext();
         String pagina = context.getViewRoot().getViewId();
 
         if ("/login.xhtml".equals(pagina)) {
@@ -28,7 +27,6 @@ public class LogPhaseListener implements PhaseListener {
         NavigationHandler handler = context.getApplication().getNavigationHandler();
         handler.handleNavigation(context, null, "/login?faces-redirect=true");
         context.renderResponse();
-         */
     }
 
     @Override
