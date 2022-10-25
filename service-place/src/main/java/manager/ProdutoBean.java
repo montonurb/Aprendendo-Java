@@ -18,4 +18,12 @@ public class ProdutoBean {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+    
+    public String visualizarProdutos() {
+        return "visualizarProdutos?faces-redirect=true";
+    }
+    
+    public String irParaCadastrarProdutos() {
+        return "cadastrarProduto?faces-redirect=true";
+    }
 }
