@@ -1,12 +1,13 @@
 package manager;
 
+import dao.DAO;
 import javax.faces.bean.ManagedBean;
 import modelo.Funcionario;
 
 @ManagedBean
 public class FuncionarioBean {
 
-    private Funcionario funcionario;
+    private Funcionario funcionario = new Funcionario();
 
     public void FuncionarioBean() {
     }
@@ -20,6 +21,10 @@ public class FuncionarioBean {
     }
     
     public void cadastrarFuncionario() {
+        System.out.println("Salvando " + this.funcionario.getNome());
+        new DAO<>(Funcionario.class).adicionar(this.funcionario);
+        System.out.println("Salvo!");
+        this.funcionario = new Funcionario();
     }
 
 }

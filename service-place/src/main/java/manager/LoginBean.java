@@ -1,16 +1,25 @@
 package manager;
 
 import dao.FuncionarioDAO;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import modelo.Funcionario;
 
-/**
- *
- * @author montonurb
- */
+
+@ManagedBean
 public class LoginBean {
 
-    Funcionario funcionario = new Funcionario();
+    private Funcionario funcionario = new Funcionario();
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    
+    
 
     public String fazerLogin() {
         boolean logado = new FuncionarioDAO().login(this.funcionario);
@@ -18,7 +27,7 @@ public class LoginBean {
         if (logado) {
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getSessionMap().put("funcionarioLogado", this.funcionario);
-            return "home?faces-redirect=true";
+            return "index?faces-redirect=true";
         } else {
             return "login?faces-redirect=false";
         }
