@@ -20,7 +20,7 @@ public class FuncionarioBean {
         this.funcionario = funcionario;
     }
 
-    public void cadastrarFuncionario() {
+    public void salvar() {
         System.out.println("Salvando " + this.funcionario.getNome());
         new DAO<>(Funcionario.class).adicionar(this.funcionario);
         System.out.println("Salvo!");
@@ -31,7 +31,7 @@ public class FuncionarioBean {
         return "visualizarFuncionarios?faces-redirect=true";
     }
 
-    public String irParaCadastrarFuncionario() {
+    public String cadastrarFuncionario() {
         return "cadastrarFuncionario?faces-redirect=true";
     }
 
