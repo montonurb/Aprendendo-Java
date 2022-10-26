@@ -11,11 +11,11 @@
 
         <ui:define name="conteudo">
             <h:form>
-                <p:commandButton value="Venda" icon="pi pi-sign-in" />
-                <p:commandButton value="Estoque" icon="pi pi-sign-in" />
-                <p:commandButton value="Cliente" icon="pi pi-sign-in" />
-                <p:commandButton value="Produto" action="#{produtoBean.visualizarProdutos()}" icon="pi pi-sign-in" />
-                <p:commandButton value="Funcionário" action="#{funcionarioBean.visualizarFuncionarios()}" icon="pi pi-sign-in" />
+                <p:commandButton value="Venda" action="#{vendaBean.visualizarVendas()}" icon="pi pi-shopping-cart" />
+                <p:commandButton value="Estoque" action="#{estoqueBean.visualizarEstoque()}" icon="pi pi-database" />
+                <p:commandButton value="Cliente" action="#{clienteBean.visualizarClientes()}" icon="pi pi-users" />
+                <p:commandButton value="Produto" action="#{produtoBean.visualizarProdutos()}" icon="pi pi-inbox" />
+                <p:commandButton value="Funcionário" action="#{funcionarioBean.visualizarFuncionarios()}" icon="pi pi-user" />
             </h:form>
         </ui:define>
     </ui:composition>
