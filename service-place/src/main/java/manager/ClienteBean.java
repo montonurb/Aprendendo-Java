@@ -19,4 +19,7 @@ public class ClienteBean {
         this.cliente = cliente;
     }
 
+    public String visualizarClientes() {
+        return "visualizarClientes?faces-redirect=true";
+    }
 }
