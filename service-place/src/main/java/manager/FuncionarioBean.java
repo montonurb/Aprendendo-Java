@@ -4,11 +4,13 @@ import dao.DAO;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import modelo.Funcionario;
+import org.primefaces.PrimeFaces;
 
 @ManagedBean
 public class FuncionarioBean {
 
     private Funcionario funcionario = new Funcionario();
+    private Integer id;
 
     public void FuncionarioBean() {
     }
@@ -21,6 +23,14 @@ public class FuncionarioBean {
         this.funcionario = funcionario;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String salvar() {
         System.out.println("Salvando " + this.funcionario.getNome());
         new DAO<>(Funcionario.class).adicionar(this.funcionario);
@@ -30,10 +40,14 @@ public class FuncionarioBean {
     }
 
     public List<Funcionario> buscarTodos() {
-        System.out.println("Buscando todos...");
         return new DAO<>(Funcionario.class).buscarTodosFuncionarios();
     }
     
+    public void editarFuncionarioModal() {
+        System.out.println("Testando");
+        PrimeFaces.current().dialog();
+    }
+
     public void excluir(Funcionario funcionario) {
         System.out.println("Excluindo...");
         new DAO<>(Funcionario.class).remover(funcionario);
