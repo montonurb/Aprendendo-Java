@@ -21,16 +21,22 @@ public class FuncionarioBean {
         this.funcionario = funcionario;
     }
 
-    public void salvar() {
+    public String salvar() {
         System.out.println("Salvando " + this.funcionario.getNome());
         new DAO<>(Funcionario.class).adicionar(this.funcionario);
         System.out.println("Salvo!");
         this.funcionario = new Funcionario();
+        return "visualizarFuncionarios?faces-redirect=true";
     }
 
     public List<Funcionario> buscarTodos() {
         System.out.println("Buscando todos...");
         return new DAO<>(Funcionario.class).buscarTodosFuncionarios();
+    }
+    
+    public void excluir(Funcionario funcionario) {
+        System.out.println("Excluindo...");
+        new DAO<>(Funcionario.class).remover(funcionario);
     }
 
     public String visualizarFuncionarios() {

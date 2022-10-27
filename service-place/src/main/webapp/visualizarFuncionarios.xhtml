@@ -14,7 +14,7 @@
             <p:button value="Cadastrar" outcome="cadastrarFuncionario.xhtml" icon="pi pi-user-plus" />
 
             <br />
-            <h:form>
+            <h:form id="funcionarios">
                 <p:dataTable value="#{funcionarioBean.buscarTodos()}" var="funcionario">
 
                     <p:column>
@@ -25,6 +25,11 @@
                     <p:column>
                         <f:facet name="header">E-mail</f:facet>
                         <h:outputText value="#{funcionario.email}" />
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">Opções</f:facet>
+                        <p:commandButton update="@form funcionarios" action="#{funcionarioBean.excluir(funcionario)}" icon="pi pi-trash"/>
                     </p:column>
                 </p:dataTable>
             </h:form>
