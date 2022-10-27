@@ -20,7 +20,7 @@ public class EstoqueBean {
     }
     
     public String visualizarEstoque() {
-        return "visualizarEstoque?faces-required=true";
+        return "visualizarEstoque?faces-redirect=true";
     }
 
 }
