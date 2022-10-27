@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import modelo.Funcionario;
 import modelo.Produto;
 
 public class DAO<T> {
@@ -39,11 +40,20 @@ public class DAO<T> {
         manager.getTransaction().commit();
         manager.close();
     }
-
-    public List<Produto> buscarTodosProdutos(T t) {
+    
+    public List<Funcionario> buscarTodosFuncionarios() {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
-        String sql = "SELECT p from Produto p";
+        String sql = "select f from Funcionario f";
+        List<Funcionario> funcionarios = manager.createQuery(sql, Funcionario.class).getResultList();
+        manager.close();
+        return funcionarios;
+    }
+
+    public List<Produto> buscarTodosProdutos() {
+        EntityManager manager = new JPAUtil().getEntityManager();
+        manager.getTransaction().begin();
+        String sql = "select p from Produto p";
         List<Produto> produtos = manager.createQuery(sql, Produto.class).getResultList();
         manager.close();
         return produtos;

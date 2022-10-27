@@ -1,6 +1,7 @@
 package manager;
 
 import dao.DAO;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import modelo.Funcionario;
 
@@ -25,6 +26,11 @@ public class FuncionarioBean {
         new DAO<>(Funcionario.class).adicionar(this.funcionario);
         System.out.println("Salvo!");
         this.funcionario = new Funcionario();
+    }
+
+    public List<Funcionario> buscarTodos() {
+        System.out.println("Buscando todos...");
+        return new DAO<>(Funcionario.class).buscarTodosFuncionarios();
     }
 
     public String visualizarFuncionarios() {

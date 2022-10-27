@@ -10,9 +10,25 @@
         <ui:define name="tituloHead">Funcionários</ui:define>
         <ui:define name="tituloBody">Funcionários</ui:define>
         <ui:define name="conteudo">
-            <fieldset>
-                <legend>Funcionários</legend>
-            </fieldset>
+
+            <p:button value="Cadastrar" outcome="cadastrarFuncionario.xhtml" icon="pi pi-user-plus" />
+
+            <br />
+            <h:form>
+                <p:dataTable value="#{funcionarioBean.buscarTodos()}" var="funcionario">
+
+                    <p:column>
+                        <f:facet name="header" >Nome</f:facet>
+                        <h:outputText value="#{funcionario.nome}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">E-mail</f:facet>
+                        <h:outputText value="#{funcionario.email}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            <br />
             <p:button value="Página Inicial" outcome="index.xhtml" />
         </ui:define>
     </ui:composition>
