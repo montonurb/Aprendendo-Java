@@ -4,6 +4,7 @@ import dao.DAO;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import modelo.Funcionario;
+import org.primefaces.PrimeFaces;
 
 @ManagedBean
 public class FuncionarioBean {
@@ -41,8 +42,10 @@ public class FuncionarioBean {
     }
 
     public void editarFuncionario(Funcionario funcionario) {
+        System.out.println("Editando 1: " + funcionario.getNome());
         this.funcionario = funcionario;
-        System.out.println("Editando");
+        PrimeFaces.current().executeScript("PF('funcionarioDialog').show()");
+        System.out.println("Editando 2: " + this.funcionario.getNome());
     }
 
     public void excluir(Funcionario funcionario) {
