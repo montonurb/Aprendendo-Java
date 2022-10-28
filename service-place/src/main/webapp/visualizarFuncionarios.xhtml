@@ -10,7 +10,7 @@
 
         <f:metadata>
             <f:viewParam name="funcionarioId" value="#{funcionarioBean.id}" />
-            
+
         </f:metadata>
 
         <ui:define name="tituloHead">Funcionários</ui:define>
@@ -35,13 +35,48 @@
 
                     <p:column>
                         <f:facet name="header">Opções</f:facet>
-                        <p:commandButton action="#{funcionarioBean.editarFuncionarioModal()}" icon="pi pi-pencil"/>
+                        <p:commandButton onclick="PF('funcionario').show();" type="button" icon="pi pi-pencil"/>
                         <p:commandButton update="@form funcionarios" style="background-color: red; border-color: red" action="#{funcionarioBean.excluir(funcionario)}" icon="pi pi-trash"/>
                     </p:column>
                 </p:dataTable>
             </h:form>
             <br />
             <p:button value="Página Inicial" outcome="index.xhtml" />
+
+            <h:form >
+                <p:dialog id="imprimirDialog" header="Editar Funcionário" widgetVar="funcionario">
+                    <f:ajax listener="#{funcionarioBean.editarFuncionario(funcionario)}" />
+
+                    <h:form>
+                        <p:messages id="mensagens" />
+                        <h:panelGrid columns="2" >
+                            <p:outputLabel value="Nome: " for="nome" />
+                            <p:inputText id="nome" value="#{funcionarioBean.funcionario.nome}" required="true" requiredMessage="Informe o nome do Funcionário.">
+                                <f:ajax event="blur" render="mensagens" />
+                            </p:inputText>
+
+                            <p:outputLabel value="CPF: " for="cpf" />
+                            <p:inputText id="cpf" value="#{funcionarioBean.funcionario.cpf}" />
+
+                            <p:outputLabel value="E-mail: " for="email" />
+                            <p:inputText id="email" value="#{funcionarioBean.funcionario.email}" required="true" requiredMessage="Informe o e-mail do Funcionário." >
+                                <f:ajax event="blur" render="mensagens" />
+                            </p:inputText>
+
+                            <p:outputLabel value="Senha: " for="senha" />
+                            <p:inputText id="senha" value="#{funcionarioBean.funcionario.senha}" required="true" requiredMessage="Informe a senha." >
+                                <f:ajax event="blur" render="mensagens" />
+                            </p:inputText>
+                        </h:panelGrid>
+                    </h:form>
+                    <p:commandButton value="Salvar" action="#{funcionarioBean.salvar()}" update="@form funcionarios" icon="pi pi-save" />
+                </p:dialog>
+            </h:form>
+
         </ui:define>
+
+
+
+
     </ui:composition>
 </html>

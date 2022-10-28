@@ -36,7 +36,7 @@
                             <f:ajax event="blur" render="mensagens" />
                         </p:inputText>
                         
-                        <p:commandButton action="#{funcionarioBean.salvar()}" value="Cadastrar" icon="pi pi-save" update="@form" />
+                        <p:commandButton action="#{funcionarioBean.testar()}" value="Cadastrar" icon="pi pi-save" update="@form" />
                         <p:button value="Página Inicial" outcome="index.xhtml" icon="pi pi-home" />
                     </h:panelGrid>
                 </fieldset>
@@ -44,13 +44,3 @@
         </ui:define>
     </ui:composition>
 </html>
-
-<!--
-
-ID
-NOME
-CPF
-EMAIL
-SENHA
-
--->
