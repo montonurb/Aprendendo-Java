@@ -41,14 +41,20 @@ public class FuncionarioBean {
         return new DAO<>(Funcionario.class).buscarTodosFuncionarios();
     }
 
-    public void editarFuncionario(Funcionario funcionario) {
-        System.out.println("Editando 1: " + funcionario.getNome());
+    public void exibirDialogParaEditar(Funcionario funcionario) {
         this.funcionario = funcionario;
         PrimeFaces.current().executeScript("PF('funcionarioDialog').show()");
-        System.out.println("Editando 2: " + this.funcionario.getNome());
     }
 
+    public String editarFuncionario() {
+        System.out.println("1: " + this.funcionario.getNome());
+        new DAO<>(Funcionario.class).atualizar(this.funcionario);
+        excluir(this.funcionario);
+        return "visualizarFuncionarios?faces-redirect=true";
+    }   
+
     public void excluir(Funcionario funcionario) {
+        System.out.println("FUNC> " + funcionario.getNome());
         new DAO<>(Funcionario.class).remover(funcionario);
     }
 

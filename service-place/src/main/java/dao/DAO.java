@@ -16,25 +16,21 @@ public class DAO<T> {
 
     public void adicionar(T t) {
         EntityManager manager = new JPAUtil().getEntityManager();
-
         manager.getTransaction().begin();
-
         manager.persist(t);
-
         manager.getTransaction().commit();
-
+        manager.close();
+    }
+    
+    public void atualizar(T t) {
+        EntityManager manager = new JPAUtil().getEntityManager();
+        manager.getTransaction().begin();
+        manager.merge(t);
+        manager.getTransaction().commit();
         manager.close();
     }
 
     public void remover(T t) {
-        EntityManager manager = new JPAUtil().getEntityManager();
-        manager.getTransaction().begin();
-        manager.remove(manager.merge(t));
-        manager.getTransaction().commit();
-        manager.close();
-    }
-
-    public void atualizar(T t) {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
         manager.remove(manager.merge(t));
