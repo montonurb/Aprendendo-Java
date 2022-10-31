@@ -35,7 +35,7 @@
 
                     <p:column>
                         <f:facet name="header">Opções</f:facet>
-                        <p:commandButton update="dialogEditarFuncionario" actionListener="#{funcionarioBean.exibirDialogParaEditar(funcionario)}" icon="pi pi-pencil"/>
+                        <p:commandButton update="dialogEditarFuncionario" action="#{funcionarioBean.exibirDialogParaEditar(funcionario)}" icon="pi pi-pencil"/>
                         <p:commandButton update="@form funcionarios" style="background-color: red; border-color: red" action="#{funcionarioBean.excluir(funcionario)}" icon="pi pi-trash"/>
                     </p:column>
                 </p:dataTable>
@@ -47,7 +47,6 @@
                 <p:dialog header="Editar Funcionário" widgetVar="funcionarioDialog">
                     <h:form >
                         <p:messages id="mensagens" />
-                        <p:outputLabel value="#{funcionarioBean.funcionario.nome}" />
 
                         <h:panelGrid columns="2" >
                             <p:outputLabel value="Nome: " for="nome" />

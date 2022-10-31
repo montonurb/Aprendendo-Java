@@ -32,6 +32,7 @@ public class FuncionarioBean {
     }
 
     public String salvar() {
+        System.out.println("FUNC: " + this.funcionario.getNome());
         new DAO<>(Funcionario.class).adicionar(this.funcionario);
         this.funcionario = new Funcionario();
         return "visualizarFuncionarios?faces-redirect=true";
@@ -42,20 +43,24 @@ public class FuncionarioBean {
     }
 
     public void exibirDialogParaEditar(Funcionario funcionario) {
+        this.id = funcionario.getId();
         this.funcionario = funcionario;
         PrimeFaces.current().executeScript("PF('funcionarioDialog').show()");
+        excluir(this.funcionario);
     }
 
     public String editarFuncionario() {
-        System.out.println("1: " + this.funcionario.getNome());
-        new DAO<>(Funcionario.class).atualizar(this.funcionario);
-        excluir(this.funcionario);
+        salvar();
         return "visualizarFuncionarios?faces-redirect=true";
-    }   
+
+    }
 
     public void excluir(Funcionario funcionario) {
-        System.out.println("FUNC> " + funcionario.getNome());
         new DAO<>(Funcionario.class).remover(funcionario);
+    }
+
+    public void excluirPorId(Integer id) {
+        new DAO<>(Funcionario.class).removerPorId(id);
     }
 
     public String visualizarFuncionarios() {

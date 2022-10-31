@@ -38,6 +38,15 @@ public class DAO<T> {
         manager.close();
     }
     
+    public void removerPorId(Integer id) {
+        System.out.println("Excuindo id: " + id);
+        EntityManager manager = new JPAUtil().getEntityManager();
+        manager.getTransaction().begin();
+        TypedQuery<Funcionario> sql = manager.createQuery("delete from Funcionario f where f.id = :pId", Funcionario.class);
+        sql.setParameter("pId", id);
+        sql.getResultList();
+    }
+    
     public List<Funcionario> buscarTodosFuncionarios() {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
