@@ -3,10 +3,14 @@ package modelo;
 import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Venda {
-
+    
+    @Id
+    @GeneratedValue
     private Integer id;
     private Cliente cliente;
     private List<Produto> carrinho;
