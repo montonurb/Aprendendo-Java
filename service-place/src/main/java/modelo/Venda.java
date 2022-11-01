@@ -2,7 +2,9 @@ package modelo;
 
 import java.util.GregorianCalendar;
 import java.util.List;
+import javax.persistence.Entity;
 
+@Entity
 public class Venda {
 
     private Integer id;

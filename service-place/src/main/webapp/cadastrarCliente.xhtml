@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="_template.xhtml">
+        <ui:define name="tituloHeade">Cliente</ui:define>
+        <ui:define name="tituloBody">Cadastrar Cliente</ui:define>
+        <ui:define name="conteudo">
+            <h:form >
+                <p:messages id="mensagens"/>
+                <fieldset>
+                    <legend>Dados do Cliente</legend>
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Nome: " for="nome" />
+                        <p:inputText id="nome" value="#{clienteBean.cliente.nome}" required="true" requiredMessage="Informe o nome do cliente.">
+                            <f:ajax event="blur" render="mensagens" />
+                        </p:inputText>
+
+                        <p:outputLabel value="CPF: " for="cpf" />
+                        <p:inputText id="cpf" value="#{clienteBean.cliente.cpf}" required="true" requiredMessage="CPF é obrigatório!" >
+                            <f:ajax event="blur" render="mensagens" />
+                        </p:inputText>
+
+                        <p:outputLabel value="Contato: " for="contato" />
+                        <p:inputText id="contato" value="#{clienteBean.cliente.contato}" required="true" requiredMessage="Contato é obrigatório!" >
+                            <f:ajax event="blur" render="mensagens" />
+                        </p:inputText>
+
+                        <p:commandButton value="Cadastrar" action="#{clienteBean.salvar()}" icon="pi pi-save" />
+
+                    </h:panelGrid>
+
+                </fieldset>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

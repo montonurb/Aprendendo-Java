@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import modelo.Cliente;
 import modelo.Funcionario;
 import modelo.Produto;
 
@@ -65,7 +66,14 @@ public class DAO<T> {
         Funcionario funcionario = sql.getSingleResult();
         
         return funcionario;
-        
+    }
+    
+    public List<Cliente> buscarTodosClientes() {
+        EntityManager manager = new JPAUtil().getEntityManager();
+        manager.getTransaction().begin();
+        String sql = "select c from Cliente c";
+        List<Cliente> clientes = manager.createQuery(sql, Cliente.class).getResultList();
+        return clientes;
     }
 
     public List<Produto> buscarTodosProdutos() {

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Cliente implements Serializable {
+    
     @Id
     @GeneratedValue
     private Integer id;
