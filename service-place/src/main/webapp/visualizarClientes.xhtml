@@ -10,29 +10,36 @@
         <ui:define name="tituloHead">Clientes</ui:define>
         <ui:define name="tituloBody">Cliente</ui:define>
         <ui:define name="conteudo">
-            
+
             <p:button value="Cadastrar" outcome="cadastrarCliente.xhtml" icon="pi pi-user-plus" />
-            
-            <fieldset>
-                <legend>Clientes</legend>
-                <h:form>
-                    <p:dataTable value="#{clienteBean.buscarTodos()}" var="cliente"></p:dataTable>
-                    <p:column>
-                        <f:facet name="header">Nome</f:facet>
-                        <h:outputText value="#{cliente.nome}" />
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">Nome</f:facet>
-                        <h:outputText value="#{cliente.cpf}" />
-                    </p:column>
-                    
-                    <p:column>
-                        <f:facet name="header">Nome</f:facet>
-                        <h:outputText value="#{cliente.contato}" />
-                    </p:column>
+
+            <h:form >
+
+                <h:form id="clientes">
+                    <p:dataTable value="#{clienteBean.buscarTodos()}" var="cliente">
+                        <p:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{cliente.nome}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">CPF</f:facet>
+                            <h:outputText value="#{cliente.cpf}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">Contato</f:facet>
+                            <h:outputText value="#{cliente.contato}" />
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">Opções</f:facet>
+                            <p:commandButton icon="pi pi-pencil" />
+                            <p:commandButton style="background-color: red; border-color: red;" icon="pi pi-trash" />
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
-            </fieldset>
+            </h:form>
             <p:button value="Página Inicial" outcome="index.xhtml" icon="pi pi-home" />
         </ui:define>
     </ui:composition>
