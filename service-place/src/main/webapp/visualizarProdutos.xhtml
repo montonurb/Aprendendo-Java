@@ -11,9 +11,16 @@
         <ui:define name="tituloBody">Produtos</ui:define>
         <ui:define name="conteudo">
             <p:button value="Cadastrar" outcome="cadastrarProduto.xhtml" />
-            <fieldset>
-                <legend>Produtos</legend>
-            </fieldset>
+            
+            <h:form id="produtos" >
+                <p:dataTable value="#{produtoBean.buscarProdutos()}" var="produto">
+                    <p:column>
+                        <f:facet name="header">Nome</f:facet>
+                        <h:outputText value="#{produto.nome}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            
             <p:button value="Página Inicial" outcome="index.xhtml" icon="pi pi-home" />
         </ui:define>
     </ui:composition>

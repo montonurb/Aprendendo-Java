@@ -1,5 +1,7 @@
 package manager;
 
+import dao.DAO;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import modelo.Produto;
 
@@ -17,6 +19,10 @@ public class ProdutoBean {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+    
+    public List<Produto> buscarProdutos() {
+        return new DAO<>(Produto.class).buscarTodosProdutos();
     }
     
     public String visualizarProdutos() {
