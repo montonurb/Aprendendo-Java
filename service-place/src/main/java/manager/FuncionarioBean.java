@@ -3,14 +3,15 @@ package manager;
 import dao.DAO;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import modelo.Funcionario;
 import org.primefaces.PrimeFaces;
 
 @ManagedBean
+@ViewScoped
 public class FuncionarioBean {
 
     private Funcionario funcionario = new Funcionario();
-    private Integer id;
 
     public void FuncionarioBean() {
     }
@@ -23,16 +24,7 @@ public class FuncionarioBean {
         this.funcionario = funcionario;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String salvar() {
-        System.out.println("FUNC: " + this.funcionario.getNome());
         new DAO<>(Funcionario.class).adicionar(this.funcionario);
         this.funcionario = new Funcionario();
         return "visualizarFuncionarios?faces-redirect=true";
@@ -43,24 +35,22 @@ public class FuncionarioBean {
     }
 
     public void exibirDialogParaEditar(Funcionario funcionario) {
-        this.id = funcionario.getId();
         this.funcionario = funcionario;
         PrimeFaces.current().executeScript("PF('funcionarioDialog').show()");
-        excluir(this.funcionario);
     }
 
     public String editarFuncionario() {
-        salvar();
+        if (this.funcionario.getId() != null) {
+            excluir(this.funcionario);
+            salvar();
+        } else {
+            salvar();
+        }
         return "visualizarFuncionarios?faces-redirect=true";
-
     }
 
     public void excluir(Funcionario funcionario) {
         new DAO<>(Funcionario.class).remover(funcionario);
-    }
-
-    public void excluirPorId(Integer id) {
-        new DAO<>(Funcionario.class).removerPorId(id);
     }
 
     public String visualizarFuncionarios() {
