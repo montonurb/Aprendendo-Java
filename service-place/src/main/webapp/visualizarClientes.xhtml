@@ -7,40 +7,68 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="_template.xhtml">
+            
         <ui:define name="tituloHead">Clientes</ui:define>
         <ui:define name="tituloBody">Cliente</ui:define>
         <ui:define name="conteudo">
 
             <p:button value="Cadastrar" outcome="cadastrarCliente.xhtml" icon="pi pi-user-plus" />
 
-            <h:form >
+            <h:form id="clientes">
+                <p:dataTable value="#{clienteBean.buscarTodos()}" var="cliente">
 
-                <h:form id="clientes">
-                    <p:dataTable value="#{clienteBean.buscarTodos()}" var="cliente">
-                        <p:column>
-                            <f:facet name="header">Nome</f:facet>
-                            <h:outputText value="#{cliente.nome}" />
-                        </p:column>
+                    <p:column>
+                        <f:facet name="header">Nome</f:facet>
+                        <h:outputText value="#{cliente.nome}" />
+                    </p:column>
 
-                        <p:column>
-                            <f:facet name="header">CPF</f:facet>
-                            <h:outputText value="#{cliente.cpf}" />
-                        </p:column>
+                    <p:column>
+                        <f:facet name="header">CPF</f:facet>
+                        <h:outputText value="#{cliente.cpf}" />
+                    </p:column>
 
-                        <p:column>
-                            <f:facet name="header">Contato</f:facet>
-                            <h:outputText value="#{cliente.contato}" />
-                        </p:column>
-                        
-                        <p:column>
-                            <f:facet name="header">Opções</f:facet>
-                            <p:commandButton icon="pi pi-pencil" />
-                            <p:commandButton style="background-color: red; border-color: red;" icon="pi pi-trash" />
-                        </p:column>
-                    </p:dataTable>
-                </h:form>
-            </h:form>
+                    <p:column>
+                        <f:facet name="header">Contato</f:facet>
+                        <h:outputText value="#{cliente.contato}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Opções</f:facet>
+                        <p:button  outcome="cadastrarCliente.xhtml" icon="pi pi-pencil" >
+                            <f:param name="clienteId" value="#{cliente.id}" />
+                        </p:button>
+                        <p:commandButton update="@form" actionListener="#{clienteBean.excluir(cliente)}" style="background-color: red; border-color: red;" icon="pi pi-trash" />
+                    </p:column>
+                </p:dataTable>
+            <p:commandButton value="Exibir Detalhes" />
             <p:button value="Página Inicial" outcome="index.xhtml" icon="pi pi-home" />
+            </h:form>
+            
+            <h:form id="dialogEditarCliente">
+                <p:dialog header="Editar Cliente" widgetVar="clienteDialog">
+                    <h:form >
+                        <p:messages id="mensagens" />
+
+                        <h:panelGrid columns="2" >
+                            <p:outputLabel value="Nome: " for="nome" />
+                            <p:inputText id="nome" value="#{clienteBean.cliente.nome}"  required="true" requiredMessage="Informe o nome do Funcionário.">
+                                <f:ajax event="blur" render="mensagens" />
+                            </p:inputText>
+
+                            <p:outputLabel value="CPF: " for="cpf" />
+                            <p:inputText id="cpf" value="#{clienteBean.cliente.cpf}" />
+
+                        </h:panelGrid>
+                    </h:form>
+                    <p:commandButton value="Salvar"  icon="pi pi-save" />
+                </p:dialog>
+            </h:form>
         </ui:define>
     </ui:composition>
 </html>
+
+<!--
+<f:metadata >
+            <f:event type="preRenderView" listener="#{clienteBean.iniciar()}" />
+        </f:metadata>
+-->
