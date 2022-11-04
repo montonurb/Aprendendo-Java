@@ -40,7 +40,6 @@ public class DAO<T> {
     }
     
     public void removerPorId(Integer id) {
-        System.out.println("Excuindo id: " + id);
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
         TypedQuery<Funcionario> sql = manager.createQuery("delete from Funcionario f where f.id = :pId", Funcionario.class);
@@ -66,6 +65,19 @@ public class DAO<T> {
         Funcionario funcionario = sql.getSingleResult();
         
         return funcionario;
+    }
+    
+    public Cliente buscarClientePorId(String id) {
+        EntityManager manager = new JPAUtil().getEntityManager();
+        manager.getTransaction().begin();
+        TypedQuery<Cliente> sql = manager.createQuery("select c from Cliente c where c.id = :pId", Cliente.class);
+
+        sql.setParameter("pId", Integer.parseInt(id));
+        Cliente cliente = sql.getSingleResult();
+        
+        System.out.println("Cliente: " + cliente.getNome());
+        
+        return cliente;
     }
     
     public List<Cliente> buscarTodosClientes() {
