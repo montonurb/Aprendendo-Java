@@ -23,7 +23,6 @@ public class LoginBean {
         boolean logado = new FuncionarioDAO().login(this.funcionario);
 
         if (logado) {
-            System.out.println("TESTE");
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getSessionMap().put("funcionarioLogado", this.funcionario);
             return "index?faces-redirect=true";
