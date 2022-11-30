@@ -7,28 +7,36 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="_template.xhtml" >
-        <ui:define name="tituloHead">Login</ui:define>
+        <ui:define name="tituloHead" class="tituloHead">Login</ui:define>
 
-        <ui:define name="tituloBody">Fazer Login</ui:define>
+        <ui:define name="conteudo" class="conteudo">
 
-        <ui:define name="conteudo">
-            <h:form>
-                <h:panelGrid columns="1" >
-                    <p:messages id="mensagens" />
-                    <p:outputLabel value="E-mail: " for="email" />
-                    <p:inputText id="email" value="#{loginBean.funcionario.email}" required="true" requiredMessage="Informe o e-mail." >
-                        <f:ajax event="blur" render="mensagens" />
-                    </p:inputText>
-
-                    <p:outputLabel value="Senha: " for="senha" />
-                    <p:inputText id="senha" value="#{loginBean.funcionario.senha}" required="true" requiredMessage="Informe a senha." >
-                        <f:ajax event="blur" render="mensagens" />
-                        <f:passThroughAttribute name="type" value="password" />
-                    </p:inputText>
-
-                    <p:commandButton value="Logar" action="#{loginBean.fazerLogin()}" icon="pi pi-sign-in"/>
-                </h:panelGrid>
-            </h:form>
+            <div class="formulario">
+                <div class="nome">
+                    <h1>FoxPlace</h1>
+                </div>
+                <h:form class="login">
+                    <h:panelGrid columns="1" >
+                        <p:messages id="mensagens" />
+                        <div class="group">
+                            <p:outputLabel class="group" value="E-mail: " for="email" />
+                            <p:inputText id="email" value="#{loginBean.funcionario.email}" required="true" requiredMessage="Informe o e-mail." >
+                                <f:ajax event="blur" render="mensagens" />
+                            </p:inputText>
+                        </div>
+                        <div class="group">
+                            <p:outputLabel class="group" value="Senha: " for="senha" />
+                            <p:inputText id="senha" value="#{loginBean.funcionario.senha}" required="true" requiredMessage="Informe a senha." >
+                                <f:ajax event="blur" render="mensagens" />
+                                <f:passThroughAttribute name="type" value="password" />
+                            </p:inputText>
+                        </div>
+                        <div class="button">
+                            <p:commandButton value="Logar" action="#{loginBean.fazerLogin()}" icon="pi pi-sign-in"/>
+                        </div>
+                    </h:panelGrid>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 

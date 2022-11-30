@@ -11,12 +11,15 @@
             <p:commandButton value="Sair" action="#{loginBean.fazerLogout()}" icon="pi pi-sign-out" />
         </h:form>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link rel="stylesheet" href="./CSS/template.css" />
+        <link rel="stylesheet" href="./CSS/login.css" />
     </h:head>
     <body>
-        <div id="cabecalho">
+        <div class="cabecalho">
             <h1><ui:insert name="tituloBody"></ui:insert></h1>
             
-            <div id="conteudo">
+            <div class="conteudo">
                 <ui:insert name="conteudo"></ui:insert>
             </div>
         </div>

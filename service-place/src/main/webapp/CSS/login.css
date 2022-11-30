@@ -1,0 +1,17 @@
+.conteudo {
+    margin: auto;
+    width: 50%;
+    background: #CCCCCC;
+}
+
+.formulario {
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nome {
+    margin: auto;
+    color: black;
+}

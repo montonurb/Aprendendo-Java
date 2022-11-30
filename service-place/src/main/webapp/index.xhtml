@@ -8,15 +8,20 @@
 
     <ui:composition template="_template.xhtml">
         <ui:define name="tituloHead">Service Place</ui:define>
+        
+        <ui:define name="tituloBody">Bem vindo ao Service Place</ui:define>
 
         <ui:define name="conteudo">
-            <h:form>
-                <p:commandButton value="Venda" action="#{vendaBean.visualizarVendas()}" icon="pi pi-shopping-cart" />
-                <p:commandButton value="Estoque" action="#{estoqueBean.visualizarEstoque()}" icon="pi pi-database" />
-                <p:commandButton value="Cliente" action="#{clienteBean.visualizarClientes()}" icon="pi pi-users" />
-                <p:commandButton value="Produto" action="#{produtoBean.visualizarProdutos()}" icon="pi pi-inbox" />
-                <p:commandButton value="Funcionário" action="#{funcionarioBean.visualizarFuncionarios()}" icon="pi pi-user" />
-            </h:form>
+            <div class="corpo">
+                <h:form>
+                    <p:commandButton class="botao-primary" value="Venda" action="#{vendaBean.visualizarVendas()}" icon="pi pi-shopping-cart" />
+                    <p:commandButton value="Estoque" action="#{estoqueBean.visualizarEstoque()}" icon="pi pi-database" />
+                    <p:commandButton value="Cliente" action="#{clienteBean.visualizarClientes()}" icon="pi pi-users" />
+                    <p:commandButton value="Produto" action="#{produtoBean.visualizarProdutos()}" icon="pi pi-inbox" />
+                    <p:commandButton value="Funcionário" action="#{funcionarioBean.visualizarFuncionarios()}" icon="pi pi-user" />
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
+    
 </html>
