@@ -2,14 +2,24 @@ package modelo;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author montonurb
  */
+@Entity
 public class Atividade {
+    @Id
     private Long id;
+    @Column(length = 200, nullable = true)
     private String nome;
+    private String descricao;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataAtividade;
 
     public Atividade(Long id, String nome, Date dataAtividade) {
