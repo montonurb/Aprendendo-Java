@@ -7,14 +7,16 @@ import model.Time;
 /**
  *
  * @author montonurb
+ * @param <G>
  */
 public class DAO<G> {
+
     private final Class<G> classe;
 
     public DAO(Class<G> classe) {
         this.classe = classe;
     }
-    
+
     //SALVAR NOVO DADO NO BANCO
     public void cadastrar(G genericClass) {
         EntityManager manager = new JPAUtil().getEntityManager();
@@ -23,7 +25,7 @@ public class DAO<G> {
         manager.getTransaction().commit();
         manager.close();
     }
-    
+
     public List<Time> buscarTimes() {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
@@ -32,15 +34,15 @@ public class DAO<G> {
         manager.close();
         return times;
     }
-    
-    public void atualizar(G genericClass ) {
+
+    public void atualizar(G genericClass) {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
         manager.merge(genericClass);
         manager.getTransaction().commit();
         manager.close();
     }
-    
+
     //DELETAR DADO NO BANCO
     public void remover(G genericClass) {
         EntityManager manager = new JPAUtil().getEntityManager();

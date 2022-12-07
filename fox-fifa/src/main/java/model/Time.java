@@ -1,13 +1,21 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author montonurb
  */
-public class Time {
+
+@Entity
+public class Time implements Serializable{
+    @Id
+    @GeneratedValue
     private Long id;
     private String nome;
     private int capacidade;

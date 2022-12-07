@@ -1,13 +1,21 @@
 package model;
 
 import enums.Sexo;
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  *
  * @author montonurb
  */
-public class Jogador {
+
+@Entity
+public class Jogador implements Serializable{
+    @Id
+    @GeneratedValue
     private Long id;
     private String nome;
     private int numero;
@@ -89,6 +97,4 @@ public class Jogador {
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
-    
-    
 }
