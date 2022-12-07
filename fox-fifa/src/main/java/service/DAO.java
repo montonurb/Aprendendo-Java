@@ -47,7 +47,6 @@ public class DAO<G> {
         manager.getTransaction().begin();
         manager.remove(manager.merge(genericClass));
         manager.getTransaction().commit();
-        
+        manager.close();
     }
-    
 }
