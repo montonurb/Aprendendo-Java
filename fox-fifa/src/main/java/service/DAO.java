@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import model.Jogador;
 import model.Time;
 
 /**
@@ -33,6 +34,15 @@ public class DAO<G> {
         List<Time> times = manager.createQuery(sql, Time.class).getResultList();
         manager.close();
         return times;
+    }
+
+    public List<Jogador> buscarJogadores() {
+        EntityManager manager = new JPAUtil().getEntityManager();
+        manager.getTransaction().begin();
+        String sql = "select j from Jogador j";
+        List<Jogador> jogadores = manager.createQuery(sql, Jogador.class).getResultList();
+        manager.close();
+        return jogadores;
     }
 
     public void atualizar(G genericClass) {

@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="_template.xhtml">
+        
+        <ui:define name="tituloHead">Time</ui:define>
+        <ui:define name="tituloBody">Time</ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:messages id="mensagens" />
+                <fieldset>
+                    <legend>Dados do Time</legend>
+                    <h:panelGrid columns="2" >
+                        <p:outputLabel value="Nome:" for="nome" />
+                        <p:inputText id="nome" value="#{timeBean.time.nome}" required="true" requiredMessage="Nome do Time é obrigatório">
+                            <f:ajax event="blur" render="mensagens" />
+                        </p:inputText>
+                    </h:panelGrid>
+                    
+                    <p:commandButton value="Cadastrar" action="#{timeBean.salvar()}" icon="pi pi-save" />
+                </fieldset>
+            </h:form>
+        </ui:define>
+        
+    </ui:composition>
+    
 </html>
