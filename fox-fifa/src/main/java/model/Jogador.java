@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Future;
 
 /**
  *
@@ -21,8 +22,10 @@ public class Jogador implements Serializable{
     private int numero;
     private int tamanhoCamisa;
     private double peso;
+    @Future
     private Date dataCadastro;
     private int tamanhoSapato;
+    @Future
     private Date dataNascimento;
     private Sexo sexo;
 

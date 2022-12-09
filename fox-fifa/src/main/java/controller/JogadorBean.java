@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import model.Jogador;
@@ -13,7 +16,7 @@ import service.DAO;
 public class JogadorBean {
 
     private Long id;
-    private Jogador jogador;
+    private Jogador jogador = new Jogador();
 
     public Long getId() {
         return id;
@@ -37,14 +40,14 @@ public class JogadorBean {
         } else {
             new DAO<>(Jogador.class).cadastrar(jogador);
         }
-        
+
         this.jogador = new Jogador();
     }
-    
+
     public void excluir(Jogador jogador) {
         new DAO<>(Jogador.class).remover(jogador);
     }
-    
+
     public List<Jogador> buscarTodos() {
         return new DAO<>(Jogador.class).buscarJogadores();
     }

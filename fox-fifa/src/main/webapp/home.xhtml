@@ -7,26 +7,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="_template.xhtml">
-        
+
         <ui:define name="tituloHead">Time</ui:define>
-        <ui:define name="tituloBody">Time</ui:define>
+        <ui:define name="tituloBody">Bem vindo ao Fox Fifa!</ui:define>
         <ui:define name="conteudo">
             <h:form>
-                <p:messages id="mensagens" />
-                <fieldset>
-                    <legend>Dados do Time</legend>
-                    <h:panelGrid columns="2" >
-                        <p:outputLabel value="Nome:" for="nome" />
-                        <p:inputText id="nome" value="#{timeBean.time.nome}" required="true" requiredMessage="Nome do Time é obrigatório">
-                            <f:ajax event="blur" render="mensagens" />
-                        </p:inputText>
-                    </h:panelGrid>
-                    
-                    <p:commandButton value="Cadastrar" action="#{timeBean.salvar()}" icon="pi pi-save" />
-                </fieldset>
+                <p:button value="Pesquisar" />
+                <p:button value="Cadastrar Time" outcome="cadastrarTime.xhtml" />
             </h:form>
         </ui:define>
-        
+
     </ui:composition>
-    
+
 </html>

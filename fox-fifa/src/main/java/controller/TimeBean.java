@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import model.Time;
@@ -13,7 +14,7 @@ import service.DAO;
 public class TimeBean {
 
     private Long id;
-    private Time time;
+    private Time time = new Time();
 
     public Long getId() {
         return id;
@@ -32,6 +33,8 @@ public class TimeBean {
     }
 
     public String salvar() {
+        this.time.setDataCadastro(new Date());
+        System.out.println("Data: " + this.time.getDataCadastro().toString());
         if (this.time.getId() != null) {
             new DAO<>(Time.class).atualizar(time);
         } else {
@@ -47,5 +50,9 @@ public class TimeBean {
 
     public List<Time> buscarTodos() {
         return new DAO<>(Time.class).buscarTimes();
+    }
+    
+    public String irParaCadastroTime() {
+        return "cadastrarTime?faces-redirect=true";
     }
 }

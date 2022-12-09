@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="_template.xhtml">
+
+        <ui:define name="tituloHead">Time</ui:define>
+        <ui:define name="tituloBody">Time</ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:messages id="mensagensTime" />
+                <fieldset>
+                    <legend>Dados do Time</legend>
+                    <h:panelGrid columns="2" >
+                        <p:outputLabel value="Nome:" for="nomeTime" />
+                        <p:inputText id="nomeTime" value="#{timeBean.time.nome}" required="true" requiredMessage="Nome do Time é obrigatório">
+                            <f:ajax event="blur" render="mensagensTime" />
+                        </p:inputText>
+
+                        <p:outputLabel value="Capacidade" for="capacidade" />
+                        <p:inputText id="capacidade" value="#{timeBean.time.capacidade}" />
+
+                        <h:form>
+                            <p:messages id="mensagensJogador"/>
+                            <fieldset>
+                                <legend>Jogadores</legend>
+                                <h:panelGrid columns="2" >
+                                    <p:outputLabel value="Nome Jogador:" for="nomeJogador" />
+                                    <p:inputText id="nomeJogador" value="#{jogadorBean.jogador.nome}" required="true" requiredMessage="Nome do jogador é obrigatório!">
+                                        <f:ajax event="blur" render="mensagensJogador" />
+                                    </p:inputText>
+
+                                    <p:outputLabel value="Número:" for="numero" />
+                                    <p:inputText id="numero" value="#{jogadorBean.jogador.nome}" required="true" requiredMessage="Número do jogador é obrigatório!">
+                                        <f:ajax event="blur" render="mensagensJogador" />
+                                    </p:inputText>
+
+                                    <p:outputLabel value="Tamanho Camisa:" for="tamanhoCamisa" />
+                                    <p:inputText id="tamanhoCamisa" value="#{jogadorBean.jogador.tamanhoCamisa}" />
+
+                                    <p:outputLabel value="Peso:" for="peso" />
+                                    <p:inputText id="peso" value="#{jogadorBean.jogador.tamanhoCamisa}" />
+
+                                    <p:outputLabel value="Tamanho Sapato:" for="tamanhoSapato" />
+                                    <p:inputText id="tamanhoSapato" value="#{jogadorBean.jogador.tamanhoCamisa}" />
+
+                                    <p:outputLabel value="Data Nascimento:" for="dataNascimento" />
+                                    <p:calendar id="dataNascimento" readonlyInput="true" navigator="true" pattern="dd/MM/yyyy" maxdate="today" value="#{jogadorBean.jogador.dataNascimento}" />
+                                    
+                                    <p:outputLabel value="Sexo: " for="sexo" />
+                                    <p:selectOneRadio id="sexo" value="#{jogadorBean.jogador.sexo}" required="true" requiredMessage="Sexo do jogador é obrigatório!">
+                                        <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                                        <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+                                        <f:selectItem itemLabel="Indeterminado" itemValue="Indeterminado" />
+                                    </p:selectOneRadio>
+                                    
+                                    <p:commandButton value="Adicionar Jogador" action="#{jogadorBean.salvar()}" icon="pi pi-save" />
+                                </h:panelGrid>
+                            </fieldset>
+                        </h:form>
+                    </h:panelGrid>
+
+                    <p:commandButton value="Cadastrar" action="#{timeBean.salvar()}" icon="pi pi-save" />
+
+                </fieldset>
+            </h:form>
+        </ui:define>
+        <script>
+            PrimeFaces.locales ['de'] = {
+                closeText: 'Schließen',
+                prevText: 'Zurück',
+                nextText: 'Weiter',
+                monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+                dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+                weekHeader: 'Woche',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Nur Zeit',
+                timeText: 'Zeit',
+                hourText: 'Stunde',
+                minuteText: 'Minute',
+                secondText: 'Sekunde',
+                currentText: 'Aktuelles Datum',
+                ampm: false,
+                month: 'Monat',
+                week: 'Woche',
+                day: 'Tag',
+                allDayText: 'Ganzer Tag'
+            };
+        </script>
+    </ui:composition>
+</html>
