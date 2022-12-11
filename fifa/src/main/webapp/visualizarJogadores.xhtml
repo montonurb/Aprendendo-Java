@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="_template.xhtml">
+        <ui:define name="tituloHead">Jogadores</ui:define>
+        <ui:define name="tituloBody">Jogadores</ui:define>
+        <ui:define name="conteudo">
+
+            <p:button value="Cadastrar" outcome="cadastrarJogador.xhtml" icon="pi pi-user-plus" />
+
+            <h:form id="jogadores">
+                <p:dataTable value="#{jogadorBean.buscarTodos()}" var="jogador" >
+
+                    <p:column>
+                        <f:facet name="header" >Nome</f:facet>
+                        <h:outputText value="#{jogador.nome}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Número</f:facet>
+                        <h:outputText value="#{jogador.numero}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Opções</f:facet>
+                        <p:commandButton update="@form jogadores" style="background-color: red; border-color: red" action="#{jogadorBean.excluir(jogador)}" icon="pi pi-trash"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            <br />
+            <p:button value="Página Inicial" outcome="index.xhtml" />
+        </ui:define>
+    </ui:composition>
+</html>
