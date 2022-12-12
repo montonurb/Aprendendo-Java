@@ -2,7 +2,6 @@ package manager;
 
 import dao.DAO;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -31,14 +30,14 @@ public class JogadorBean implements Serializable {
         this.jogador = jogador;
     }
 
-    public String salvar() {
-        //SimpleDateFormat dataFormatada = new SimpleDateFormat("dd-MM-yyyy");
+    public void salvar() {
+        System.out.println("Salvando!");
         Date dataCadastro = new Date();
         this.jogador.setDataCadastro(dataCadastro);
-        System.out.println("Data: " + this.jogador.getDataCadastro().toString());
         new DAO<>(Jogador.class).adicionar(this.jogador);
         this.jogador = new Jogador();
-        return "visualizarJogadores?faces-redirect=true";
+        System.out.println("Salvo!");
+        //return "visualizarJogadores?faces-redirect=true";
     }
 
     public List<Jogador> buscarTodos() {

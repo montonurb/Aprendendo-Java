@@ -6,20 +6,21 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author montonurb
  */
-
 @Entity
-public class Time implements Serializable {
+public class Selecao implements Serializable {
 
     @Id
     @GeneratedValue
     private Long id;
     private String nome;
     private int capacidade;
+    @OneToMany
     private List<Jogador> jogadores;
     private Date dataCadastro;
 
@@ -49,6 +50,10 @@ public class Time implements Serializable {
 
     public List<Jogador> getJogadores() {
         return jogadores;
+    }
+
+    public void adicionarJogador(Jogador jogador) {
+        this.jogadores.add(jogador);
     }
 
     public void setJogadores(List<Jogador> jogadores) {

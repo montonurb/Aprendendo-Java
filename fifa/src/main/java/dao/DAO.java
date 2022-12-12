@@ -4,7 +4,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import modelo.Jogador;
-import modelo.Time;
+import modelo.Selecao;
 
 public class DAO<T> {
 
@@ -55,16 +55,16 @@ public class DAO<T> {
         return jogador;
     }
     
-    public List<Time> buscarTodosTimes() {
+    public List<Selecao> buscarTodasSelecoes() {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
-        String sql = "select t from Time t";
-        List<Time> times = manager.createQuery(sql, Time.class).getResultList();
+        String sql = "select s from Selecao s";
+        List<Selecao> selecoes = manager.createQuery(sql, Selecao.class).getResultList();
         manager.close();
-        return times;
+        return selecoes;
     }
 
-    public Jogador buscarJogadorPorId(Integer id) {
+    public Jogador buscarJogadorPorId(Long id) {
         EntityManager manager = new JPAUtil().getEntityManager();
         manager.getTransaction().begin();
         TypedQuery<Jogador> sql = manager.createQuery("select j from Jogador j where j.id = :pId", Jogador.class);

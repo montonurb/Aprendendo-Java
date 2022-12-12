@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ public class Jogador implements Serializable {
     private int numero;
     private int tamanhoCamisa;
     private double peso;
-    private Date dataCadastro; 
+    private Date dataCadastro;
     private int tamanhoSapato;
     private Date dataNascimento;
     private Sexo sexo;
@@ -92,6 +93,4 @@ public class Jogador implements Serializable {
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
-    
-    
 }

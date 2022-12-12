@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="_template.xhtml">
+
+        <ui:define name="tituloHead">Cadastrar Seleção</ui:define>
+
+        <ui:define name="tituloBody">Nova Seleção</ui:define>
+
+        <ui:define name="conteudo">
+            <h:form id="formularioSelecao">
+                <p:messages id="mensagensSelecao" />
+                <p:fieldset legend="Dados da Seleção">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Nome Seleção:" for="nomeSelecao" />
+                        <p:inputText id="nomeSelecao" value="#{selecaoBean.selecao.nome}" required="true" requiredMessage="Informe o nome da Selecao.">
+                            <f:ajax event="blur" render="mensagensSelecao" />
+                        </p:inputText>
+
+                        <p:outputLabel value="Capacidade:" for="capacidade" />
+                        <p:inputText id="capacidade" value="#{selecaoBean.selecao.capacidade}" />
+
+                        <p:commandButton action="#{jogadorBean.salvar()}" value="Cadastrar" icon="pi pi-save" update="@form" />
+                        <p:button value="Página Inicial" outcome="index.xhtml" icon="pi pi-home" />
+                    </h:panelGrid>
+                </p:fieldset>
+            </h:form>
+
+            <h:form id="fieldsetJogador" >
+                <h:panelGrid columns="2">
+                    <h:form id="formularioJogador" >
+                        <p:fieldset legend="Cadastrar Jogador">
+                            <p:messages id="mensagensJogador" />
+                            <h:panelGrid columns="2" >
+                                <p:outputLabel value="Nome: " for="nomeJogador" />
+                                <p:inputText id="nomeJogador" value="#{jogadorBean.jogador.nome}" required="true" requiredMessage="Informe o nome do Jogador.">
+                                    <f:ajax event="blur" render="mensagensJogador" />
+                                </p:inputText>
+
+                                <p:outputLabel value="Número: " for="numero" />
+                                <p:inputText id="numero" value="#{jogadorBean.jogador.numero}" required="true" requiredMessage="Informe o número do Jogador." >
+                                    <f:ajax event="blur" render="mensagensJogador" />
+                                </p:inputText>
+
+                                <p:outputLabel value="Tamanho camisa: " for="tamanhoCamisa" />
+                                <p:inputText id="tamanhoCamisa" value="#{jogadorBean.jogador.tamanhoCamisa}" />
+
+                                <p:outputLabel value="Peso: " for="peso" />
+                                <p:inputText id="peso" value="#{jogadorBean.jogador.peso}" />
+
+                                <p:outputLabel value="Tamanho sapato: " for="tamanhoSapato" />
+                                <p:inputText id="tamanhoSapato" value="#{jogadorBean.jogador.tamanhoSapato}" />
+
+                                <p:outputLabel value="Data nascimento: " for="dataNascimento" />
+                                <p:calendar id="dataNascimento" pattern="dd/MM/yyyy" maxdate="today" readonlyInput="true" />
+
+                                <p:outputLabel value="Sexo: " for="sexo" />
+                                <p:selectOneMenu id="sexo" value="#{jogadorBean.jogador.sexo}" required="true" requiredMessage="Sexo jo Jogador é obrigatório!" >
+                                    <f:selectItems value="#{jogadorBean.sexos}" />
+                                </p:selectOneMenu>
+
+                                <p:commandButton action="#{selecaoBean.buscarTodos()}" update="@form :fieldsetJogador" value="Cadastrar Jogador" icon="pi pi-save" />
+
+                            </h:panelGrid>
+                        </p:fieldset>
+                    </h:form>
+
+                    <h:form id="dadosJogadores" >
+                        <p:fieldset legend="Jogadores" >
+                            <p:outputLabel value="Selecione o Jogador: " for="jogador" />
+                            <p:selectOneMenu value="#{selecaoBean.jogadorId}" id="jogador" >
+                                <f:selectItems value="#{selecaoBean.jogadores}" var="jogador" itemLabel="#{jogador.nome}" itemValue="#{jogador.id}" />
+                            </p:selectOneMenu>
+
+                            <p:commandButton value="Adicionar" process="@this" action="#{selecaoBean.gravarJogador()}" update="@form :fieldsetJogador" icon="pi pi-plus" />
+
+                            <p:dataTable value="#{selecaoBean.selecao.jogadores}" var="jogador" id="tabelaJogadores">
+
+                                <p:column headerText="Nome">
+                                    <p:outputLabel value="#{jogador.nome}" />
+                                </p:column>
+
+                                <p:column headerText="Número">
+                                    <p:outputLabel value="#{jogador.numero}" />
+                                </p:column>
+
+                                <p:column headerText="Opções">
+                                    <p:commandButton icon="pi pi-pencil" />
+                                    <p:commandButton action="#{jogadorBean.excluir(jogador)}" update="@form :fieldsetJogador" style="background-color: red; border-color: red" icon="pi pi-trash" />
+                                </p:column>
+                            </p:dataTable>
+                        </p:fieldset>
+                    </h:form>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

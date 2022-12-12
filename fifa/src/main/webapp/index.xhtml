@@ -6,14 +6,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:composition template="_template.xhtml">
-        <ui:define name="tituloHead">Service Place</ui:define>
+        <ui:define name="tituloHead">Fox Fifa</ui:define>
 
-        <ui:define name="tituloBody">Bem vindo ao Service Place</ui:define>
+        <ui:define name="tituloBody">Bem vindo ao Fox Fifa</ui:define>
 
         <ui:define name="conteudo">
             <div class="corpo">
                 <h:form>
-                    <p:commandButton value="Times" action="#{timeBean.visualizarTimes()}" icon="pi pi-users" />
+                    <p:commandButton value="Seleções" action="#{selecaoBean.visualizarSelecoes()}" icon="pi pi-users" />
                     <p:commandButton value="Jogadores" action="#{jogadorBean.visualizarJogadores()}" icon="pi pi-user" />
                 </h:form>
             </div>

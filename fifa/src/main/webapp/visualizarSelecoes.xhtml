@@ -7,23 +7,23 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="_template.xhtml">
-        <ui:define name="tituloHead">Times</ui:define>
-        <ui:define name="tituloBody">Times</ui:define>
+        <ui:define name="tituloHead">Seleções</ui:define>
+        <ui:define name="tituloBody">Seleções</ui:define>
         <ui:define name="conteudo">
 
-            <p:button value="Cadastrar" outcome="cadastrarTime.xhtml" icon="pi pi-user-plus" />
+            <p:button value="Cadastrar" outcome="cadastrarSelecao.xhtml" icon="pi pi-user-plus" />
 
-            <h:form id="times">
-                <p:dataTable value="#{timeBean.buscarTodos()}" var="time" >
+            <h:form id="selecoes">
+                <p:dataTable value="#{selecaoBean.buscarTodos()}" var="selecao" >
 
                     <p:column>
                         <f:facet name="header" >Nome</f:facet>
-                        <h:outputText value="#{time.nome}" />
+                        <h:outputText value="#{selecao.nome}" />
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">Capacidade</f:facet>
-                        <h:outputText value="#{time.capacidade}" />
+                        <h:outputText value="#{selecao.capacidade}" />
                     </p:column>
 
                     <p:column>

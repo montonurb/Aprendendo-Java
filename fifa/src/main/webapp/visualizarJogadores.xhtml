@@ -15,6 +15,10 @@
 
             <h:form id="jogadores">
                 <p:dataTable value="#{jogadorBean.buscarTodos()}" var="jogador" >
+                    <p:column>
+                        <f:facet name="header" >ID</f:facet>
+                        <h:outputText value="#{jogador.id}" />
+                    </p:column>
 
                     <p:column>
                         <f:facet name="header" >Nome</f:facet>

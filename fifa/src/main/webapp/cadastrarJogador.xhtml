@@ -35,7 +35,7 @@
                         <p:inputText id="tamanhoSapato" value="#{jogadorBean.jogador.tamanhoSapato}" />
 
                         <p:outputLabel value="Data nascimento: " for="dataNascimento" />
-                        <p:calendar id="dataNascimento" pattern="dd/MM/yyyy" maxdate="today" readonlyInput="true" />
+                        <p:calendar id="dataNascimento" value="#{jogadorBean.jogador.dataNascimento}" pattern="dd/MM/yyyy" maxdate="today" readonlyInput="true" />
 
                         <p:outputLabel value="Sexo: " for="sexo" />
                         <p:selectOneMenu id="sexo" value="#{jogadorBean.jogador.sexo}" required="true" requiredMessage="Sexo jo Jogador é obrigatório!" >
