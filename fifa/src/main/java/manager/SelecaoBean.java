@@ -1,6 +1,7 @@
 package manager;
 
 import dao.DAO;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -8,16 +9,11 @@ import javax.faces.bean.ViewScoped;
 import modelo.Jogador;
 import modelo.Selecao;
 
-/**
- *
- * @author montonurb
- */
 @ManagedBean
 @ViewScoped
-public class SelecaoBean {
+public class SelecaoBean implements Serializable {
 
     private Selecao selecao = new Selecao();
-    private Long selecaoId;
     private Long jogadorId;
 
     public SelecaoBean() {
@@ -29,14 +25,6 @@ public class SelecaoBean {
 
     public void setSelecao(Selecao selecao) {
         this.selecao = selecao;
-    }
-
-    public Long getSelecaoId() {
-        return selecaoId;
-    }
-
-    public void setSelecaoId(Long selecaoId) {
-        this.selecaoId = selecaoId;
     }
 
     public Long getJogadorId() {
@@ -54,10 +42,19 @@ public class SelecaoBean {
         this.selecao = new Selecao();
         return "visualizarSelecoes?faces-redirect=true";
     }
-    
+
     public void gravarJogador() {
-        Jogador jogador = new DAO<>(Jogador.class).buscarJogadorPorId(this.jogadorId);
+        Jogador jogador = new DAO<>(Jogador.class).buscaPorId(this.jogadorId);
         this.selecao.adicionarJogador(jogador);
+    }
+    
+    public void removerJogador(Jogador jogador) {
+        System.out.println(">>>" + jogador.getNome());
+        this.selecao.removerJogador(jogador);
+    }
+    
+    public List<Jogador> getJogadoresSelecao() {
+        return this.selecao.getJogadores();
     }
 
     public List<Jogador> getJogadores() {

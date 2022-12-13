@@ -63,6 +63,13 @@ public class DAO<T> {
         manager.close();
         return selecoes;
     }
+    
+    public T buscaPorId(Long id) {
+        EntityManager manager = new JPAUtil().getEntityManager();
+        T t = manager.find(classe, id);
+        manager.close();
+        return t;
+    }
 
     public Jogador buscarJogadorPorId(Long id) {
         EntityManager manager = new JPAUtil().getEntityManager();

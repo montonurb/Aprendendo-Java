@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class Selecao implements Serializable {
     private String nome;
     private int capacidade;
     @OneToMany
-    private List<Jogador> jogadores;
+    private List<Jogador> jogadores = new ArrayList<Jogador>();
     private Date dataCadastro;
 
     public Long getId() {
@@ -53,7 +54,14 @@ public class Selecao implements Serializable {
     }
 
     public void adicionarJogador(Jogador jogador) {
-        this.jogadores.add(jogador);
+        if (!this.jogadores.contains(jogador)) {
+            this.jogadores.add(jogador);
+        }
+    }
+
+    public void removerJogador(Jogador jogador) {
+        this.jogadores.remove(jogador);
+        System.out.println("REMOVIDO!");
     }
 
     public void setJogadores(List<Jogador> jogadores) {
