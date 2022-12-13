@@ -15,6 +15,8 @@ public class SelecaoBean implements Serializable {
 
     private Selecao selecao = new Selecao();
     private Long jogadorId;
+    private int quantidadeJogadores;
+    private boolean botao;
 
     public SelecaoBean() {
     }
@@ -35,6 +37,22 @@ public class SelecaoBean implements Serializable {
         this.jogadorId = jogadorId;
     }
 
+    public int getQuantidadeJogadores() {
+        return quantidadeJogadores;
+    }
+
+    public void setQuantidadeJogadores(int quantidadeJogadores) {
+        this.quantidadeJogadores = quantidadeJogadores;
+    }
+
+    public boolean isBotao() {
+        return botao;
+    }
+
+    public void setBotao(boolean botao) {
+        this.botao = botao;
+    }
+
     public String salvar() {
         this.selecao.setDataCadastro(new Date());
         System.out.println("Data: " + this.selecao.getDataCadastro().toString());
@@ -53,6 +71,18 @@ public class SelecaoBean implements Serializable {
         this.selecao.removerJogador(jogador);
     }
     
+    public void salvarQuantidade(int quantidade) {
+        this.quantidadeJogadores = quantidade;
+    }
+    
+    public void statusBotao() {
+        if(this.quantidadeJogadores <= getJogadoresSelecao().size()) {
+            this.botao = true;
+        } else {
+            this.botao = false;
+        }
+    }
+    
     public List<Jogador> getJogadoresSelecao() {
         return this.selecao.getJogadores();
     }
@@ -62,7 +92,7 @@ public class SelecaoBean implements Serializable {
     }
 
     public List<Selecao> buscarTodos() {
-        return new DAO<>(Selecao.class).buscarTodasSelecoes();
+        return new DAO<>(Selecao.class).buscarTodos();
     }
 
     public String visualizarSelecoes() {

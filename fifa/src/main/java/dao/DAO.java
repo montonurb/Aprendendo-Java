@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
 import modelo.Jogador;
 import modelo.Selecao;
 
@@ -55,13 +56,14 @@ public class DAO<T> {
         return jogador;
     }
     
-    public List<Selecao> buscarTodasSelecoes() {
+    public List<T> buscarTodos() {
         EntityManager manager = new JPAUtil().getEntityManager();
-        manager.getTransaction().begin();
-        String sql = "select s from Selecao s";
-        List<Selecao> selecoes = manager.createQuery(sql, Selecao.class).getResultList();
+        CriteriaQuery<T> query = manager.getCriteriaBuilder().createQuery(classe);
+        query.select(query.from(classe));
+        
+        List<T> lista = manager.createQuery(query).getResultList();
         manager.close();
-        return selecoes;
+        return lista;
     }
     
     public T buscaPorId(Long id) {

@@ -37,7 +37,6 @@ public class JogadorBean implements Serializable {
         new DAO<>(Jogador.class).adicionar(this.jogador);
         this.jogador = new Jogador();
         System.out.println("Salvo!");
-        //return "visualizarJogadores?faces-redirect=true";
     }
 
     public List<Jogador> buscarTodos() {
